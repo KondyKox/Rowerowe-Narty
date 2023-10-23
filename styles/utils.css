@@ -1,0 +1,47 @@
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */
+
+.btn {
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 1.5em 4em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  background-color: var(--clr-dark);
+  border: solid 1px transparent;
+  border-radius: 10px;
+  margin-top: 0.75em;
+  transition: all 0.2s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+}
+.btn:hover,
+.btn:hover a {
+  transform: scale(1.2);
+  color: var(--clr-blue);
+}
+
+.container__list {
+  position: relative;
+  width: 350px;
+  margin: auto;
+  list-style-type: none;
+}

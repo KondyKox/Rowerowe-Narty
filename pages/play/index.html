@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rowerowe Narty</title>
+
+    <link rel="icon" href="/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Signika+Negative:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../styles/style.css" />
+    <link rel="stylesheet" href="../../styles/utils.css" />
+    <link rel="stylesheet" href="../../styles/components/user_interface.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav__logo">
+        <a href="../../index.html"><img src="/logo.png" alt="Rowerowe Narty - logo"/></a>
+      </div>
+      <div class="nav__ui">
+        <ul class="ui">
+            <li class="ui__element">Score: <span class="score"></span></li>
+            <li class="ui__element">Best Score: <span class="best-score"></span></li>
+        </ul>
+      </div>
+    </nav>
+
+    <canvas></canvas>
+
+    <script src="../../src/jquery-3.6.1.min.js"></script>
+    <script src="../../src/classes/Player.js"></script>
+    <script src="../../src/game.js"></script>
+  </body>
+</html>

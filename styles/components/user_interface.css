@@ -1,0 +1,33 @@
+body {
+    overflow: hidden;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    border-bottom: 1px solid var(--clr-light);
+}
+
+.nav__logo {
+    padding: 1.25em;
+}
+
+.nav__logo img {
+    width: 5em;
+}
+
+.ui {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    font-size: var(--size-xl);
+    font-weight: 600;
+    letter-spacing: .2em;
+}
+
+.ui__element span {
+    color: var(--clr-red);
+}

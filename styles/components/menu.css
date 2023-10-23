@@ -1,0 +1,15 @@
+@keyframes animateLogo {
+  0% {
+    left: 1000px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+img {
+  animation-name: animateLogo;
+  animation-duration: 2s;
+}

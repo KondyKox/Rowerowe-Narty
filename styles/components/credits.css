@@ -1,0 +1,10 @@
+.creators {
+    text-align: center;
+    padding: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: var(--size-2xl);
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    position: relative;
+}
