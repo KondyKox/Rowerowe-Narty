@@ -1,31 +1,8 @@
-class Player {
+class Player extends Sprite {
   constructor(x, y, imageSrc) {
-    this.position = {
-      x: x,
-      y: y,
-    };
-    this.velocity = {
-      x: 0,
-      y: 0,
-    };
-    this.image = new Image();
-    this.image.src = imageSrc;
-    this.width = 150;
-    this.height = 110;
+    super(x, y, imageSrc, 150, 110);
+
     this.direction = "left";
-
-    this.sides = {
-      bottom: this.position.y + this.height,
-      top: this.position.y,
-      right: this.position.x + this.width,
-      left: this.position.x,
-    };
-
-    this.loaded = false;
-
-    this.image.onload = () => {
-      this.loaded = true;
-    };
   }
 
   // Draw a player
@@ -56,7 +33,6 @@ class Player {
 
   // Update player
   update() {
-    this.position.y += this.velocity.y;
-    this.position.x += this.velocity.x;
+    super.update();
   }
 }
