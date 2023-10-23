@@ -1,26 +1,59 @@
 class Player {
   constructor(x, y, imageSrc) {
-    this.x = x;
-    this.y = y;
+    this.position = {
+      x: x,
+      y: y,
+    };
+    this.velocity = {
+      x: 0,
+      y: 0,
+    };
     this.image = new Image();
+    this.image.src = imageSrc;
+    this.width = 150;
+    this.height = 110;
+    this.direction = "left";
+
+    this.sides = {
+      bottom: this.position.y + this.height,
+    };
+
+    this.loaded = false;
+
     this.image.onload = () => {
       this.loaded = true;
-      this.width = this.image.width;
-      this.height = this.image.height;
     };
-    this.image.src = imageSrc;
-    this.loaded = false;
   }
 
-  draw() {
+  // Draw a player
+  draw(ctx) {
     if (!this.loaded) return;
 
-    c.drawImage(
-      this.image,
-      this.x,
-      this.y,
-      this.width,
-      this.height
-    )
+    if (this.direction === "left")
+      ctx.drawImage(
+        this.image,
+        this.position.x,
+        this.position.y,
+        this.width,
+        this.height
+      );
+    else {
+      ctx.save();
+      ctx.scale(-1, 1);
+      ctx.drawImage(
+        this.image,
+        -this.position.x - this.width,
+        this.position.y,
+        this.width,
+        this.height
+      );
+      ctx.restore();
+    }
+  }
+
+  // Update player
+  update() {
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
   }
 }
