@@ -16,6 +16,9 @@ class Player {
 
     this.sides = {
       bottom: this.position.y + this.height,
+      top: this.position.y,
+      right: this.position.x + this.width,
+      left: this.position.x,
     };
 
     this.loaded = false;
@@ -53,7 +56,7 @@ class Player {
 
   // Update player
   update() {
-    this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+    this.position.x += this.velocity.x;
   }
 }
