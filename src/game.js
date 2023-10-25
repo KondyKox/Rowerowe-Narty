@@ -25,8 +25,15 @@ const playerY = canvas.height / 1.5;
 const playerImg = "/player.png";
 const player = new Player(playerX, playerY, playerImg);
 
+// Score
 let score = 0;
 let bestScore = 0;
+let checkpoint = 0;
+
+// Obstacles variables
+const obstacleList = [];
+let numberOfObstacles = 1;
+let obstaclesGravity = 2;
 
 // Keys to play
 const keys = {
@@ -47,6 +54,18 @@ const keys = {
 // Game loop function
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Creating obstacles
+  for (const obstacle of obstacleList) {
+    if (score >= checkpoint + 500) {
+      checkpoint = score;
+
+      obstaclesGravity += 0.25;
+    }
+
+    obstacle.draw(ctx);
+    obstacle.update();
+  }
 
   // Player movement
   player.velocity.x = 0;
@@ -73,9 +92,38 @@ function gameLoop() {
 // Check for collision with game bounds
 function gameBoundsCollision() {
   if (player.position.y <= gameBounds.top) player.position.y = gameBounds.top;
-  if (player.position.y + player.height >= gameBounds.bottom) player.position.y = gameBounds.bottom - player.height;
+  if (player.position.y + player.height >= gameBounds.bottom)
+    player.position.y = gameBounds.bottom - player.height;
   if (player.position.x <= gameBounds.left) player.position.x = gameBounds.left;
-  if (player.position.x + player.width >= gameBounds.right) player.position.x = gameBounds.right - player.width;
+  if (player.position.x + player.width >= gameBounds.right)
+    player.position.x = gameBounds.right - player.width;
 }
+
+// Generate obstacles
+function generateObstacles(obstacleList, gameBounds, numberOfObstacles) {
+  for (let i = 0; i < numberOfObstacles; i++) {
+    const obstacleImg = "/enemy.png";
+
+    const randomX =
+      Math.random() * (gameBounds.right - gameBounds.left) + gameBounds.left;
+
+    const newObstacle = new Obstacle(
+      randomX,
+      gameBounds.top - 10,
+      obstacleImg,
+      obstaclesGravity,
+      150,
+      110,
+      gameBounds,
+      obstacleList
+    );
+
+    obstacleList.push(newObstacle);
+  }
+}
+
+setInterval(() => {
+  generateObstacles(obstacleList, gameBounds, numberOfObstacles);
+}, 1000);
 
 gameLoop();
