@@ -1,35 +1,13 @@
 window.addEventListener("keydown", (e) => {
-  switch (e.key) {
-    case "w":
-      keys.w.pressed = true;
-      break;
-    case "s":
-      keys.s.pressed = true;
-      break;
-    case "a":
-      keys.a.pressed = true;
-      player.direction = "left";
-      break;
-    case "d":
-      keys.d.pressed = true;
-      player.direction = "right";
-      break;
+  const key = e.key;
+  if (key in keys) {
+    keys[key].pressed = true;
+    if (keys[key].pressed && key === "d") player.direction = "right";
+    if (keys[key].pressed && key === "a") player.direction = "left";
   }
 });
 
 window.addEventListener("keyup", (e) => {
-  switch (e.key) {
-    case "w":
-      keys.w.pressed = false;
-      break;
-    case "s":
-      keys.s.pressed = false;
-      break;
-    case "a":
-      keys.a.pressed = false;
-      break;
-    case "d":
-      keys.d.pressed = false;
-      break;
-  }
+  const key = e.key;
+  if (key in keys) keys[key].pressed = false;
 });

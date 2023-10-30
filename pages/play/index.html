@@ -19,23 +19,40 @@
   <body>
     <nav class="navbar">
       <div class="nav__logo">
-        <a href="../../index.html"><img src="/logo.png" alt="Rowerowe Narty - logo"/></a>
+        <a href="../../index.html"
+          ><img src="/logo.png" alt="Rowerowe Narty - logo"
+        /></a>
       </div>
       <div class="nav__ui">
         <ul class="ui">
-            <li class="ui__element">Score: <span class="score"></span></li>
-            <li class="ui__element">Best Score: <span class="best-score"></span></li>
+          <li class="ui__element">Score: <span class="score"></span></li>
+          <li class="ui__element">
+            Best Score: <span class="best-score"></span>
+          </li>
         </ul>
       </div>
     </nav>
 
     <canvas></canvas>
 
+    <div class="game-over">
+      <h1>YOU NOOB!</h1>
+      <div class="game-over__scores">
+        <p class="game-over__score">Score: <span class="score"></span></p>
+        <p class="game-over__best-score">
+          Best Score: <span class="best-score"></span>
+        </p>
+      </div>
+      <p>Click to <span class="play-again">play again</span>.</p>
+    </div>
+
     <script src="../../src/jquery-3.6.1.min.js"></script>
     <script src="../../src/classes/Sprite.js"></script>
     <script src="../../src/classes/Player.js"></script>
     <script src="../../src/classes/Obstacle.js"></script>
     <script src="../../src/eventListeners.js"></script>
+    <script src="../../src/checkCollisions.js"></script>
+    <script src="../../src/generate.js"></script>
     <script src="../../src/game.js"></script>
   </body>
 </html>

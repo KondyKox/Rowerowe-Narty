@@ -1,34 +1,56 @@
 body {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-    border-bottom: 1px solid var(--clr-light);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  border-bottom: 1px solid var(--clr-light);
 }
 
 .nav__logo {
-    padding: 1.25em;
+  padding: 1.25em;
 }
 
 .nav__logo img {
-    width: 5em;
+  width: 5em;
 }
 
 .ui {
-    list-style: none;
-    display: flex;
-    gap: 1em;
-    font-size: var(--size-xl);
-    font-weight: 600;
-    letter-spacing: .2em;
-    padding: 1.25em;
+  list-style: none;
+  display: flex;
+  gap: 1em;
+  font-size: var(--size-xl);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  padding: 1.25em;
 }
 
 .ui__element span {
-    color: var(--clr-red);
+  color: var(--clr-red);
+}
+
+.game-over {
+  font-size: var(--size-4xl);
+  font-weight: 800;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  letter-spacing: 0.2rem;
+  padding: 5em;
+  text-shadow: 1px 1px 1px white, -1px 1px 1px white, -1px -1px 0 white,
+    1px -1px 0 white;
+}
+
+.game-over__scores span {
+  color: var(--clr-red);
+}
+
+.play-again {
+  color: var(--clr-blue);
 }
