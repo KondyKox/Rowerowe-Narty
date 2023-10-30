@@ -20,3 +20,18 @@ function collisionWithObstacles() {
       return true;
   }
 }
+
+// Check for collision with puddles
+let collisionTimer = null;
+
+function collisionWithPuddles() {
+  for (const puddle of puddlesList) {
+    if (
+      player.position.y < puddle.position.y + puddle.height &&
+      player.position.y + player.height > puddle.position.y &&
+      player.position.x < puddle.position.x + puddle.width &&
+      player.position.x + player.width > puddle.position.x
+    )
+      return true;
+  }
+}

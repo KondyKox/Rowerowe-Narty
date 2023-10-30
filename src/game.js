@@ -36,8 +36,12 @@ if (bestScore === null) localStorage.setItem("bestScore", "0");
 
 // Obstacles variables
 const obstacleList = [];
+const puddlesList = [];
 let numberOfObstacles = 1;
+
 let OBSTACLES_GRAVITY = 2;
+let PLAYER_SPEED = 7;
+let SLOWED_DOWN = 4;
 
 // Keys to play
 const keys = {
@@ -65,10 +69,17 @@ function gameLoop() {
   player.velocity.x = 0;
   player.velocity.y = 0;
 
-  if (keys.w.pressed) player.velocity.y = -7;
-  if (keys.s.pressed) player.velocity.y = 7;
-  if (keys.a.pressed) player.velocity.x = -7;
-  if (keys.d.pressed) player.velocity.x = 7;
+  if (!collisionWithPuddles()) {
+    if (keys.w.pressed) player.velocity.y = -PLAYER_SPEED;
+    if (keys.s.pressed) player.velocity.y = PLAYER_SPEED;
+    if (keys.a.pressed) player.velocity.x = -PLAYER_SPEED;
+    if (keys.d.pressed) player.velocity.x = PLAYER_SPEED;
+  } else {
+    if (keys.w.pressed) player.velocity.y = -SLOWED_DOWN;
+    if (keys.s.pressed) player.velocity.y = SLOWED_DOWN;
+    if (keys.a.pressed) player.velocity.x = -SLOWED_DOWN;
+    if (keys.d.pressed) player.velocity.x = SLOWED_DOWN;
+  }
 
   // Check for collision with obstacles
   if (collisionWithObstacles()) gameOver();
@@ -87,6 +98,12 @@ function gameLoop() {
       obstacle.update();
     }
 
+    // Creating puddles
+    for (const puddle of puddlesList) {
+      puddle.draw(ctx);
+      puddle.update();
+    }
+
     // Counting score
     scoreEl[0].innerHTML = score;
 
@@ -102,11 +119,15 @@ function gameLoop() {
 
   gameBoundsCollision();
 
-  gameLoopID = requestAnimationFrame(gameLoop);
+  if (!gameIsOver) gameLoopID = requestAnimationFrame(gameLoop);
 }
 
 // Finish the game
+let gameIsOver = false;
+
 function gameOver() {
+  gameIsOver = true;
+
   // Game over screen
   canvas.style.display = "none";
   game_over.style.display = "flex";
