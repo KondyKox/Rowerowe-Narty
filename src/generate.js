@@ -53,3 +53,38 @@ function generatePuddles(puddlesList, gameBounds, numberOfObstacles) {
 setInterval(() => {
   generatePuddles(puddlesList, gameBounds, numberOfObstacles);
 }, 2000);
+
+// Generate police
+function generatePolice(policeList, gameBounds, numberOfObstacles) {
+  for (let i = 0; i < numberOfObstacles; i++) {
+    const policeX = getX(gameBounds.left, gameBounds.right).x;
+    const direction = getX(gameBounds.left, gameBounds.right).direction;
+
+    const policeImg = "/police.png";
+
+    const newPolice = new Police(
+      policeX,
+      player.position.y,
+      policeImg,
+      POLICE_SPEED,
+      direction,
+      150,
+      110,
+      gameBounds,
+      policeList
+    );
+
+    policeList.push(newPolice);
+  }
+}
+
+function getX(leftBound, rightBound) {
+  if (Math.random() < 0.5) {
+    return { x: leftBound, direction: "right" };
+  }
+  return { x: rightBound, direction: "left" };
+}
+
+setInterval(() => {
+  generatePolice(policeList, gameBounds, numberOfObstacles);
+}, 1900);

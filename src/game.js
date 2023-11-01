@@ -37,9 +37,11 @@ if (bestScore === null) localStorage.setItem("bestScore", "0");
 // Obstacles variables
 const obstacleList = [];
 const puddlesList = [];
+const policeList = [];
 let numberOfObstacles = 1;
 
 let OBSTACLES_GRAVITY = 2;
+let POLICE_SPEED = 3;
 let PLAYER_SPEED = 7;
 let SLOWED_DOWN = 4;
 
@@ -82,7 +84,7 @@ function gameLoop() {
   }
 
   // Check for collision with obstacles
-  if (collisionWithObstacles()) gameOver();
+  if (collisionWithObstacles() || collisionWithPolice()) gameOver();
   else {
     // Creating obstacles
     for (const obstacle of obstacleList) {
@@ -102,6 +104,20 @@ function gameLoop() {
     for (const puddle of puddlesList) {
       puddle.draw(ctx);
       puddle.update();
+    }
+
+    // Creating police
+    for (const police of policeList) {
+      if (POLICE_SPEED <= 8) {
+        if (score >= checkpoint + 500) {
+          checkpoint = score;
+
+          POLICE_SPEED += 0.15;
+        }
+      }
+
+      police.draw(ctx);
+      police.update();
     }
 
     // Counting score

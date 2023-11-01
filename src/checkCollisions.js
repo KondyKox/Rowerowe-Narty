@@ -35,3 +35,16 @@ function collisionWithPuddles() {
       return true;
   }
 }
+
+// Check for collision with police
+function collisionWithPolice() {
+  for (const police of policeList) {
+    if (
+      player.position.y < police.position.y + police.height &&
+      player.position.y + player.height > police.position.y &&
+      player.position.x < police.position.x + police.width &&
+      player.position.x + player.width > police.position.x
+    )
+      return true;
+  }
+}
