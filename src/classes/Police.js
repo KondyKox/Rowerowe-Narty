@@ -9,6 +9,8 @@ class Police extends Sprite {
   }
 
   draw(ctx) {
+    if (!this.loaded) return;
+
     if (this.direction === "left")
       ctx.drawImage(
         this.image,

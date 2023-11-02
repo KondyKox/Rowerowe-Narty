@@ -1,3 +1,4 @@
+// Game context
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const game_over = document.querySelector(".game-over");
@@ -34,19 +35,33 @@ let newBestScore = 0;
 let bestScore = localStorage.getItem("bestScore");
 if (bestScore === null) localStorage.setItem("bestScore", "0");
 
-// Obstacles variables
+// Obstacles arrays
 const obstacleList = [];
 const puddlesList = [];
 const policeList = [];
-let numberOfObstacles = 1;
+const boostsList = [];
 
+// Amount of obstacles
+let numberOfObstacles = 1;
+let numberOfPolice = 1;
+let numberOfBoosts = 1;
+
+// Speed variables
 let OBSTACLES_GRAVITY = 2;
 let POLICE_SPEED = 3;
-let PLAYER_SPEED = 7;
+let DEFAULT_SPEED = 7;
+let PLAYER_SPEED = DEFAULT_SPEED;
 let SLOWED_DOWN = 4;
+let ACCELERATED_SPEED = 10;
+
+// Other variables
+let MULTIPLIER = 1;
+let SHIELD = false;
+let collidedObject = null;
 
 // Keys to play
 const keys = {
+  // Movement
   w: {
     pressed: false,
   },
@@ -57,6 +72,20 @@ const keys = {
     pressed: false,
   },
   d: {
+    pressed: false,
+  },
+
+  // Shoot
+  ArrowUp: {
+    pressed: false,
+  },
+  ArrowDown: {
+    pressed: false,
+  },
+  ArrowLeft: {
+    pressed: false,
+  },
+  ArrowRight: {
     pressed: false,
   },
 };
@@ -84,12 +113,14 @@ function gameLoop() {
   }
 
   // Check for collision with obstacles
-  if (collisionWithObstacles() || collisionWithPolice()) gameOver();
-  else {
+  if (checkCollisions()) {
+    if (!SHIELD) gameOver();
+    // else if (SHIELD) SHIELD = false;
+  } else {
     // Creating obstacles
     for (const obstacle of obstacleList) {
       if (OBSTACLES_GRAVITY <= 7) {
-        if (score >= checkpoint + 500) {
+        if (score >= checkpoint + 1000) {
           checkpoint = score;
 
           OBSTACLES_GRAVITY += 0.15;
@@ -109,15 +140,21 @@ function gameLoop() {
     // Creating police
     for (const police of policeList) {
       if (POLICE_SPEED <= 8) {
-        if (score >= checkpoint + 500) {
+        if (score >= checkpoint + 1000) {
           checkpoint = score;
 
-          POLICE_SPEED += 0.15;
+          POLICE_SPEED += 0.2;
         }
       }
 
       police.draw(ctx);
       police.update();
+    }
+
+    // Creating boosts
+    for (const boost of boostsList) {
+      boost.draw(ctx);
+      boost.update();
     }
 
     // Counting score
@@ -126,14 +163,16 @@ function gameLoop() {
     if (score >= bestScore) bestScoreEl[0].innerHTML = newBestScore;
     else bestScoreEl[0].innerHTML = bestScore;
 
-    score++;
+    score += MULTIPLIER;
     newBestScore = score;
+
+    // Creating player
+    player.draw(ctx);
+    player.update();
+
+    checkCollisions();
+    boostEffects();
   }
-
-  player.draw(ctx);
-  player.update();
-
-  gameBoundsCollision();
 
   if (!gameIsOver) gameLoopID = requestAnimationFrame(gameLoop);
 }

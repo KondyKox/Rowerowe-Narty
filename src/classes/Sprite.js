@@ -21,6 +21,8 @@ class Sprite {
   }
 
   draw(ctx) {
+    if (!this.loaded) return;
+
     ctx.drawImage(
       this.image,
       this.position.x,

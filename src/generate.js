@@ -21,10 +21,6 @@ function generateObstacles(obstacleList, gameBounds, numberOfObstacles) {
   }
 }
 
-setInterval(() => {
-  generateObstacles(obstacleList, gameBounds, numberOfObstacles);
-}, 1500);
-
 // Generate puddles
 function generatePuddles(puddlesList, gameBounds, numberOfObstacles) {
   for (let i = 0; i < numberOfObstacles; i++) {
@@ -50,13 +46,9 @@ function generatePuddles(puddlesList, gameBounds, numberOfObstacles) {
   }
 }
 
-setInterval(() => {
-  generatePuddles(puddlesList, gameBounds, numberOfObstacles);
-}, 2000);
-
 // Generate police
-function generatePolice(policeList, gameBounds, numberOfObstacles) {
-  for (let i = 0; i < numberOfObstacles; i++) {
+function generatePolice(policeList, gameBounds, numberOfPolice) {
+  for (let i = 0; i < numberOfPolice; i++) {
     const policeX = getX(gameBounds.left, gameBounds.right).x;
     const direction = getX(gameBounds.left, gameBounds.right).direction;
 
@@ -85,6 +77,51 @@ function getX(leftBound, rightBound) {
   return { x: rightBound, direction: "left" };
 }
 
+// Generate boosts
+function generateBoosts(boostsList, gameBounds, numberOfBoosts) {
+  for (let i = 0; i < numberOfBoosts; i++) {
+    const effects = ["speed", "pistol", "shotgun", "multiplier", "shield"];
+    const effect = randomEffect(effects);
+
+    const boostImg = `/${effect}.png`;
+
+    const randomX =
+      Math.random() * (gameBounds.right - gameBounds.left) + gameBounds.left;
+
+    const newBoost = new BoostEffect(
+      randomX,
+      gameBounds.top - 10,
+      boostImg,
+      2,
+      100,
+      100,
+      gameBounds,
+      boostsList,
+      effect
+    );
+
+    boostsList.push(newBoost);
+  }
+}
+
+function randomEffect(effects) {
+  const randomIndex = Math.floor(Math.random() * effects.length);
+  return effects[randomIndex];
+}
+
+// Generating in time
 setInterval(() => {
-  generatePolice(policeList, gameBounds, numberOfObstacles);
-}, 1900);
+  generateObstacles(obstacleList, gameBounds, numberOfObstacles);
+}, 2100);
+
+setInterval(() => {
+  generatePuddles(puddlesList, gameBounds, numberOfObstacles);
+}, 2200);
+
+setInterval(() => {
+  generatePolice(policeList, gameBounds, numberOfPolice);
+}, 2000);
+
+setInterval(() => {
+  generateBoosts(boostsList, gameBounds, numberOfBoosts);
+}, 5000);
