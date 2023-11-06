@@ -80,7 +80,12 @@ function getX(leftBound, rightBound) {
 // Generate boosts
 function generateBoosts(boostsList, gameBounds, numberOfBoosts) {
   for (let i = 0; i < numberOfBoosts; i++) {
-    const effects = ["speed", "pistol", "shotgun", "multiplier", "shield"];
+    const effects = [
+      "speed",
+      "pistol" /* "shotgun", */,
+      "multiplier",
+      "shield",
+    ];
     const effect = randomEffect(effects);
 
     const boostImg = `/${effect}.png`;
@@ -97,7 +102,7 @@ function generateBoosts(boostsList, gameBounds, numberOfBoosts) {
       100,
       gameBounds,
       boostsList,
-      effect
+      "pistol"
     );
 
     boostsList.push(newBoost);
@@ -107,6 +112,25 @@ function generateBoosts(boostsList, gameBounds, numberOfBoosts) {
 function randomEffect(effects) {
   const randomIndex = Math.floor(Math.random() * effects.length);
   return effects[randomIndex];
+}
+
+// Generate bullets on shoot
+function generateBullets(bulletList, gameBounds, direction) {
+  const bulletImg = `/bullet.png`;
+
+  const newBullet = new Bullet(
+    (player.position.x + player.width) / 2,
+    (player.position.y + player.height) / 2,
+    bulletImg,
+    30,
+    30,
+    5,
+    gameBounds,
+    bulletList,
+    direction
+  );
+
+  bulletList.push(newBullet);
 }
 
 // Generating in time

@@ -6,6 +6,7 @@ class Police extends Sprite {
     this.direction = direction;
     this.gameBounds = gameBounds;
     this.policeList = policeList;
+    this.possibleCollision = true;
   }
 
   draw(ctx) {

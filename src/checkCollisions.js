@@ -14,11 +14,12 @@ function checkCollisions() {
       player.position.y + player.height > obstacle.position.y &&
       player.position.x < obstacle.position.x + obstacle.width &&
       player.position.x + player.width > obstacle.position.x
-    ) {
-      collidedObject = obstacle;
+    )
+      if (obstacle.possibleCollision) {
+        collidedObject = obstacle;
 
-      return true;
-    }
+        return true;
+      }
   }
 
   // Check for collision with police
@@ -28,11 +29,12 @@ function checkCollisions() {
       player.position.y + player.height > police.position.y &&
       player.position.x < police.position.x + police.width &&
       player.position.x + player.width > police.position.x
-    ) {
-      collidedObject = police;
+    )
+      if (police.possibleCollision) {
+        collidedObject = police;
 
-      return true;
-    }
+        return true;
+      }
   }
 }
 
@@ -62,33 +64,66 @@ function boostEffects() {
 
       switch (effect) {
         case "speed":
-          setInterval(() => {
-            speed();
-          }, 5000);
-          PLAYER_SPEED = DEFAULT_SPEED;
+          speed();
           boost.destroy();
+          setTimeout(() => {
+            PLAYER_SPEED = DEFAULT_SPEED;
+          }, 5000);
           break;
+
         case "pistol":
-          pistol();
+          ammunition = 10;
+          PISTOL = true;
           boost.destroy();
           break;
-        case "shotgun":
-          shotgun();
-          boost.destroy();
-          break;
+
+        // case "shotgun":
+        //   shotgun();
+        //   boost.destroy();
+        //   break;
+
         case "multiplier":
-          setInterval(() => {
-            multiplier();
+          multiplier();
+          boost.destroy();
+          setTimeout(() => {
+            MULTIPLIER = 1;
           }, 5000);
-          boost.destroy();
           break;
+
         case "shield":
-          shield();
+          SHIELD = true;
           boost.destroy();
           break;
+
         default:
           break;
       }
+    }
+  }
+}
+
+// Bullets collisions with obcjects
+function bulletCollision() {
+  for (const bullet of bulletList) {
+    if (
+      bullet.position.y < obstacle.position.y + obstacle.height &&
+      bullet.position.y + bullet.height > obstacle.position.y &&
+      bullet.position.x < obstacle.position.x + obstacle.width &&
+      bullet.position.x + bullet.width > obstacle.position.x
+    ) {
+      collidedObject = obstacle;
+
+      return true;
+    }
+    if (
+      bullet.position.y < police.position.y + police.height &&
+      bullet.position.y + bullet.height > police.position.y &&
+      bullet.position.x < police.position.x + police.width &&
+      bullet.position.x + bullet.width > police.position.x
+    ) {
+      collidedObject = police;
+
+      return true;
     }
   }
 }

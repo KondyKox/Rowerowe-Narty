@@ -1,28 +1,34 @@
 // Faster player
 function speed() {
   PLAYER_SPEED = ACCELERATED_SPEED;
-  console.log(PLAYER_SPEED);
 }
 
 // Shot with pistol
-function pistol() {}
+function pistol(direction) {
+  if (ammunition > 0) {
+    generateBullets(bulletList, gameBounds, direction);
+    ammunition--;
+    direction = null;
 
-// Multipler shots with shotgun
-function shotgun() {}
+    if (bulletCollision && collidedObject != null)
+      collidedObject.possibleCollision = false;
+  } else PISTOL = false;
+}
+
+// // Multiple shots with shotgun
+// function shotgun() {}
 
 // More points
 function multiplier() {
   MULTIPLIER = 2;
-  console.log(MULTIPLIER);
 }
 
 // Protect from 1 hit
 function shield() {
-  SHIELD = true;
-
-  if (checkCollisions()) {
-    collidedObject.destroy();
+  if (collidedObject != null) {
+    collidedObject.possibleCollision = false;
 
     SHIELD = false;
+    collidedObject = null;
   }
 }

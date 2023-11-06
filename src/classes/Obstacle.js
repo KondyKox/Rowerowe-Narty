@@ -5,6 +5,7 @@ class Obstacle extends Sprite {
     this.gravity = gravity;
     this.gameBounds = gameBounds;
     this.obstacleList = obstacleList;
+    this.possibleCollision = true;
   }
 
   update() {
