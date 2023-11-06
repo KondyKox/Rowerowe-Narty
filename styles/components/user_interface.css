@@ -19,7 +19,12 @@ body {
   width: 5em;
 }
 
-.ui {
+.nav__ui {
+  display: flex;
+  align-items: center;
+}
+
+.ui__list {
   list-style: none;
   display: flex;
   gap: 1em;
@@ -31,6 +36,16 @@ body {
 
 .ui__element span {
   color: var(--clr-red);
+}
+
+.ui__element img {
+  width: 50px;
+  height: auto;
+  display: none;
+}
+
+.pistolAmmo {
+  display: flex;
 }
 
 .game-over {

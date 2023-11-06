@@ -68,12 +68,15 @@ function boostEffects() {
           boost.destroy();
           setTimeout(() => {
             PLAYER_SPEED = DEFAULT_SPEED;
+            document.querySelector(".speed").style.display = "none";
           }, 5000);
           break;
 
         case "pistol":
           ammunition = 10;
           PISTOL = true;
+          document.querySelector(".pistol").style.display = "block";
+          document.querySelector(".ammo").innerHTML = ammunition;
           boost.destroy();
           break;
 
@@ -87,11 +90,13 @@ function boostEffects() {
           boost.destroy();
           setTimeout(() => {
             MULTIPLIER = 1;
+            document.querySelector(".multi").style.display = "none";
           }, 5000);
           break;
 
         case "shield":
           SHIELD = true;
+          document.querySelector(".shield").style.display = "block";
           boost.destroy();
           break;
 

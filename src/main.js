@@ -42,7 +42,6 @@ const puddlesList = [];
 const policeList = [];
 const boostsList = [];
 const bulletList = [];
-let list = null;
 
 // Amount of obstacles
 let numberOfObstacles = 1;
