@@ -39,9 +39,14 @@
   color: var(--clr-blue);
 }
 
+.container {
+  padding: 2em;
+}
+
 .container__list {
   position: relative;
-  width: 350px;
+  width: 25em;
   margin: auto;
   list-style-type: none;
+  padding: 1.5em;
 }

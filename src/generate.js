@@ -102,7 +102,7 @@ function generateBoosts(boostsList, gameBounds, numberOfBoosts) {
       100,
       gameBounds,
       boostsList,
-      "pistol"
+      effect
     );
 
     boostsList.push(newBoost);
