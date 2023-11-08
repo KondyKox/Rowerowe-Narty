@@ -44,10 +44,13 @@ body {
   display: none;
 }
 
-.pistolAmmo {
-  display: flex;
+.ui__element .coin {
+  display: block;
 }
 
+.ui__boost {
+  display: flex;
+}
 .game-over {
   font-size: var(--size-4xl);
   font-weight: 800;

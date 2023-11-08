@@ -100,6 +100,11 @@ function boostEffects() {
           boost.destroy();
           break;
 
+        case "coin":
+          coins++;
+          boost.destroy();
+          break;
+
         default:
           break;
       }

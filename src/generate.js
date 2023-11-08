@@ -85,6 +85,7 @@ function generateBoosts(boostsList, gameBounds, numberOfBoosts) {
       "pistol" /* "shotgun", */,
       "multiplier",
       "shield",
+      "coin",
     ];
     const effect = randomEffect(effects);
 

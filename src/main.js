@@ -10,6 +10,8 @@ const navHeight = document.querySelector(".navbar").offsetHeight;
 const scoreEl = document.querySelectorAll(".score");
 const bestScoreEl = document.querySelectorAll(".best-score");
 
+const coinEl = document.querySelector(".coins");
+
 // Canvas size
 canvas.width = innerWidth;
 canvas.height = innerHeight - navHeight;
@@ -35,6 +37,9 @@ let newBestScore = 0;
 
 let bestScore = localStorage.getItem("bestScore");
 if (bestScore === null) localStorage.setItem("bestScore", "0");
+
+let coins = localStorage.getItem("coins");
+if (coins === null) localStorage.setItem("coins", "0");
 
 // Obstacles arrays
 const obstacleList = [];

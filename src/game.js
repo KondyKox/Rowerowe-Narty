@@ -25,7 +25,6 @@ function gameLoop() {
     for (const bullet of bulletList) {
       bullet.draw(ctx);
       bullet.update();
-      console.log(bulletList);
     }
   }
 
@@ -83,6 +82,8 @@ function gameLoop() {
     score += MULTIPLIER;
     newBestScore = score;
 
+    coinEl.innerHTML = coins;
+
     // Creating player
     player.draw(ctx);
     player.update();
@@ -104,11 +105,15 @@ function gameOver() {
   canvas.style.display = "none";
   game_over.style.display = "flex";
 
+  // Update best score
   if (newBestScore > parseInt(bestScore))
     localStorage.setItem("bestScore", newBestScore.toString());
 
   scoreEl[1].innerHTML = score;
   bestScoreEl[1].innerHTML = localStorage.getItem("bestScore");
+
+  // Update coins
+  localStorage.setItem("coins", coins);
 
   // cancelAnimationFrame(gameLoopID); // Stop the game
 
