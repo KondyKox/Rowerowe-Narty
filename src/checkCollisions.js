@@ -18,6 +18,8 @@ function checkCollisions() {
       if (obstacle.possibleCollision) {
         collidedObject = obstacle;
 
+        chickenSfx.play();
+
         return true;
       }
   }
@@ -33,6 +35,8 @@ function checkCollisions() {
       if (police.possibleCollision) {
         collidedObject = police;
 
+        policeSfx.play();
+
         return true;
       }
   }
@@ -46,8 +50,11 @@ function collisionWithPuddles() {
       player.position.y + player.height > puddle.position.y &&
       player.position.x < puddle.position.x + puddle.width &&
       player.position.x + player.width > puddle.position.x
-    )
+    ) {
+      puddleSfx.play();
+
       return true;
+    }
   }
 }
 
@@ -73,8 +80,11 @@ function boostEffects() {
           break;
 
         case "pistol":
+          pistolSfx.play();
+
           ammunition = 10;
           PISTOL = true;
+
           document.querySelector(".pistol").style.display = "block";
           document.querySelector(".ammo").innerHTML = ammunition;
           boost.destroy();
@@ -95,12 +105,16 @@ function boostEffects() {
           break;
 
         case "shield":
+          shieldSfx.play();
+
           SHIELD = true;
           document.querySelector(".shield").style.display = "block";
           boost.destroy();
           break;
 
         case "coin":
+          coinSfx.play();
+
           coins++;
           boost.destroy();
           break;

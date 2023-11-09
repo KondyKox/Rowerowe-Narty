@@ -9,7 +9,23 @@
   }
 }
 
+@keyframes animateLogo2 {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  100% {
+    left: -1200px;
+    top: 0px;
+  }
+}
+
 img {
   animation-name: animateLogo;
+  animation-duration: 2s;
+}
+
+.animate {
+  animation-name: animateLogo2;
   animation-duration: 2s;
 }

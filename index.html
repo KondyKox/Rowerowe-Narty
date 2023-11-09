@@ -15,19 +15,69 @@
     <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/utils.css" />
     <link rel="stylesheet" href="./styles/components/animate-logo.css" />
+    <link rel="stylesheet" href="./styles/components/store.css" />
+    <link rel="stylesheet" href="./styles/components/donate.css" />
+    <link rel="stylesheet" href="./styles/components/credits.css" />
   </head>
   <body>
     <div class="logo">
       <img src="/logo.png" alt="Rowerowe Narty - logo" />
     </div>
 
-    <div class="container">
-      <ul class="container__list">
-        <a href="./pages/play/index.html"><li class="btn">play</li></a>
-        <a href="./pages/store/index.html"><li class="btn">store</li></a>
-        <a href="./pages/donate/index.html"> <li class="btn">donate</li></a>
-        <a href="./pages/credits/index.html"><li class="btn">credits</li></a>
-      </ul>
-    </div>
+    <main>
+      <section id="sectionMain" class="container__section">
+        <ul class="container__list">
+          <li id="play" class="btn">play</li>
+          <li id="store" class="btn">store</li>
+          <li id="donate" class="btn">donate</li>
+          <li id="credits" class="btn">credits</li>
+        </ul>
+      </section>
+
+      <section id="sectionStore" class="container__section">
+        <div class="container__store">
+          <p>I'm still working on skins</p>
+        </div>
+        <ul class="container__list">
+          <li class="btn">back</li>
+        </ul>
+      </section>
+
+      <section id="sectionDonate" class="container__section">
+        <div class="container__donate">
+          <p>
+            Here's my account number:
+            <span class="acc-number">PL39109028350000000146579429</span>.
+          </p>
+          <p>
+            And there is my
+            <a href="https://www.paypal.com/paypalme/megakoks" target="_blank"
+              ><span class="paypal">PayPal</span></a
+            >.
+          </p>
+          <p class="thx">THX FOR MONEY <span class="heart">❤</span></p>
+        </div>
+        <ul class="container__list">
+          <li class="btn">back</li>
+        </ul>
+      </section>
+
+      <section id="sectionCredits" class="container__section">
+        <div class="creators">
+          <p>
+            Konrad Ciesielski - <span class="ceo">CEO, I made everything</span>
+          </p>
+        </div>
+
+        <div class="container__credits">
+          <ul class="container__list">
+            <li class="btn">back</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="./src/music.js"></script>
+    <script src="./src/changeSection.js"></script>
   </body>
 </html>

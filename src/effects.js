@@ -1,5 +1,7 @@
 // Faster player
 function speed() {
+  speedSfx.play();
+
   PLAYER_SPEED = ACCELERATED_SPEED;
 
   document.querySelector(".speed").style.display = "block";
@@ -7,8 +9,11 @@ function speed() {
 
 // Shot with pistol
 function pistol(direction) {
+  const newShootSfx = shootSfx.cloneNode();
+  newShootSfx.play();
+
   ammunition--;
-  
+
   generateBullets(bulletList, gameBounds, direction);
   direction = null;
 
@@ -29,6 +34,8 @@ function pistol(direction) {
 
 // More points
 function multiplier() {
+  multiplierSfx.play();
+
   MULTIPLIER = 2;
 
   document.querySelector(".multi").style.display = "block";
@@ -37,6 +44,8 @@ function multiplier() {
 // Protect from 1 hit
 function shield() {
   if (collidedObject != null) {
+    shieldSfx.play();
+
     document.querySelector(".shield").style.display = "none";
 
     collidedObject.possibleCollision = false;

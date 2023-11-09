@@ -16,6 +16,10 @@
 /* 2xl */
 /* @media (min-width: 1536px) {} */
 
+.logo {
+  position: relative;
+}
+
 .btn {
   border: none;
   text-align: center;
@@ -49,4 +53,12 @@
   margin: auto;
   list-style-type: none;
   padding: 1.5em;
+}
+
+.container__section {
+  display: none;
+}
+
+#sectionMain {
+  display: block;
 }
