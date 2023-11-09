@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Get music URL by current page
   function generateAudioPath(url) {
-    if (currentURL.includes("index.html")) return `./sfx/main-theme.mp3`;
+    if (url.includes("index.html")) return `./sfx/main-theme.mp3`;
     else return "./sfx/game-music.mp3";
   }
 
