@@ -12,7 +12,7 @@ document.querySelectorAll(".btn").forEach((btn) => {
       case "play":
         logo.classList.add("animate");
         logo.addEventListener("animationend", () => {
-          window.location.href = "play.html";
+          window.location.href = "/play.html";
         });
         break;
 

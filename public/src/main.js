@@ -27,7 +27,7 @@ const gameBounds = {
 // Player object
 const playerX = canvas.width / 2;
 const playerY = canvas.height / 1.5;
-const playerImg = "/player.png";
+const playerImg = "/img/player.png";
 const player = new Player(playerX, playerY, playerImg);
 
 // Score
@@ -101,15 +101,15 @@ const keys = {
 };
 
 // Sound effects
-const chickenSfx = new Audio("../sfx/chicken.mp3");
-const policeSfx = new Audio("../sfx/police.mp3");
-const puddleSfx = new Audio("../sfx/puddle.mp3");
-const speedSfx = new Audio("../sfx/speed.mp3");
-const pistolSfx = new Audio("../sfx/pistol.mp3");
-const shootSfx = new Audio("../sfx/shoot.mp3");
-const multiplierSfx = new Audio("../sfx/multiplier.mp3");
-const shieldSfx = new Audio("../sfx/shield.mp3");
-const coinSfx = new Audio("../sfx/coin.mp3");
+const chickenSfx = new Audio("/sfx/chicken.mp3");
+const policeSfx = new Audio("/sfx/police.mp3");
+const puddleSfx = new Audio("/sfx/puddle.mp3");
+const speedSfx = new Audio("/sfx/speed.mp3");
+const pistolSfx = new Audio("/sfx/pistol.mp3");
+const shootSfx = new Audio("/sfx/shoot.mp3");
+const multiplierSfx = new Audio("/sfx/multiplier.mp3");
+const shieldSfx = new Audio("/sfx/shield.mp3");
+const coinSfx = new Audio("/sfx/coin.mp3");
 
 // Start the game
 gameLoopID = requestAnimationFrame(gameLoop);

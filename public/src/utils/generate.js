@@ -1,7 +1,7 @@
 // Generate obstacles
 function generateObstacles(obstacleList, gameBounds, numberOfObstacles) {
   for (let i = 0; i < numberOfObstacles; i++) {
-    const obstacleImg = "/enemy.png";
+    const obstacleImg = "/img/enemy.png";
 
     const randomX =
       Math.random() * (gameBounds.right - gameBounds.left) + gameBounds.left;
@@ -26,7 +26,7 @@ function generatePuddles(puddlesList, gameBounds, numberOfObstacles) {
   for (let i = 0; i < numberOfObstacles; i++) {
     const number = Math.floor(Math.random() * 2) + 1;
 
-    const puddleImg = `/puddle${number}.png`;
+    const puddleImg = `/img/puddle${number}.png`;
 
     const randomX =
       Math.random() * (gameBounds.right - gameBounds.left) + gameBounds.left;
@@ -52,7 +52,7 @@ function generatePolice(policeList, gameBounds, numberOfPolice) {
     const policeX = getX(gameBounds.left, gameBounds.right).x;
     const direction = getX(gameBounds.left, gameBounds.right).direction;
 
-    const policeImg = "/police.png";
+    const policeImg = "/img/police.png";
 
     const newPolice = new Police(
       policeX,
@@ -89,7 +89,7 @@ function generateBoosts(boostsList, gameBounds, numberOfBoosts) {
     ];
     const effect = randomEffect(effects);
 
-    const boostImg = `/${effect}.png`;
+    const boostImg = `/img/${effect}.png`;
 
     const randomX =
       Math.random() * (gameBounds.right - gameBounds.left) + gameBounds.left;
@@ -117,7 +117,7 @@ function randomEffect(effects) {
 
 // Generate bullets on shoot
 function generateBullets(bulletList, gameBounds, direction) {
-  const bulletImg = `/bullet.png`;
+  const bulletImg = `/img/bullet.png`;
 
   const newBullet = new Bullet(
     (player.position.x + player.width) / 2,
