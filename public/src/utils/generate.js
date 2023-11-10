@@ -120,8 +120,8 @@ function generateBullets(bulletList, gameBounds, direction) {
   const bulletImg = `/img/bullet.png`;
 
   const newBullet = new Bullet(
-    (player.position.x + player.width) / 2,
-    (player.position.y + player.height) / 2,
+    player.position.x + player.width / 2,
+    player.position.y + player.height / 2,
     bulletImg,
     30,
     30,

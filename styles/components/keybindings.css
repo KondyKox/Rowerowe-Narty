@@ -1,0 +1,10 @@
+.keys__movement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
+
+.keys__movement img {
+    width: 30px;
+}

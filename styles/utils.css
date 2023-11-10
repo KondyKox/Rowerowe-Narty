@@ -20,6 +20,15 @@
   position: relative;
 }
 
+.container__section {
+  display: none;
+  padding: 1.5em;
+}
+
+#sectionMain {
+  display: block;
+}
+
 .btn {
   border: none;
   text-align: center;
@@ -37,6 +46,7 @@
   transition: all 0.2s ease-in-out;
   -webkit-font-smoothing: antialiased;
 }
+
 .btn:hover,
 .btn:hover a {
   transform: scale(1.2);
@@ -53,12 +63,4 @@
   margin: auto;
   list-style-type: none;
   padding: 1.5em;
-}
-
-.container__section {
-  display: none;
-}
-
-#sectionMain {
-  display: block;
 }

@@ -10,8 +10,10 @@ class Bullet extends Sprite {
     bulletList,
     direction
   ) {
-    super(x, y, imageSrc, width, height, velocity, gameBounds);
+    super(x, y, imageSrc, width, height);
 
+    this.velocity = velocity;
+    this.gameBounds = gameBounds;
     this.bulletList = bulletList;
     this.direction = direction;
   }
@@ -77,22 +79,22 @@ class Bullet extends Sprite {
   update() {
     switch (this.direction) {
       case "up":
-        this.position.y -= this.velocity.y;
+        this.position.y -= this.velocity;
         if (this.position.y + this.height < this.gameBounds.top) this.destroy();
         break;
 
       case "down":
-        this.position.y += this.velocity.y;
+        this.position.y += this.velocity;
         if (this.position.y > this.gameBounds.bottom) this.destroy();
         break;
 
       case "left":
-        this.position.x -= this.velocity.x;
+        this.position.x -= this.velocity;
         if (this.position.x + this.width < this.gameBounds.left) this.destroy();
         break;
 
       case "right":
-        this.position.x += this.velocity.x;
+        this.position.x += this.velocity;
         if (this.position.x > this.gameBounds.right) this.destroy();
         break;
 

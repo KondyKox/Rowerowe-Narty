@@ -126,28 +126,37 @@ function boostEffects() {
   }
 }
 
-// Bullets collisions with obcjects
+// Bullets collisions with objects
 function bulletCollision() {
   for (const bullet of bulletList) {
-    if (
-      bullet.position.y < obstacle.position.y + obstacle.height &&
-      bullet.position.y + bullet.height > obstacle.position.y &&
-      bullet.position.x < obstacle.position.x + obstacle.width &&
-      bullet.position.x + bullet.width > obstacle.position.x
-    ) {
-      collidedObject = obstacle;
-
-      return true;
+    // Check collisions with obstacles
+    for (const obstacle of obstacleList) {
+      if (
+        bullet.position.y < obstacle.position.y + obstacle.height &&
+        bullet.position.y + bullet.height > obstacle.position.y &&
+        bullet.position.x < obstacle.position.x + obstacle.width &&
+        bullet.position.x + bullet.width > obstacle.position.x
+      ) {
+        collidedObject = obstacle;
+        bullet.hide();
+        return true;
+      }
     }
-    if (
-      bullet.position.y < police.position.y + police.height &&
-      bullet.position.y + bullet.height > police.position.y &&
-      bullet.position.x < police.position.x + police.width &&
-      bullet.position.x + bullet.width > police.position.x
-    ) {
-      collidedObject = police;
 
-      return true;
+    // Check collisions with police
+    for (const police of policeList) {
+      if (
+        bullet.position.y < police.position.y + police.height &&
+        bullet.position.y + bullet.height > police.position.y &&
+        bullet.position.x < police.position.x + police.width &&
+        bullet.position.x + bullet.width > police.position.x
+      ) {
+        collidedObject = police;
+        bullet.hide();
+        return true;
+      }
     }
   }
+
+  return false;
 }

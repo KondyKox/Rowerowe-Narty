@@ -8,7 +8,24 @@ function speed() {
 }
 
 // Shot with pistol
-function pistol(direction) {
+let direction;
+
+function pistol(key) {
+  switch (key) {
+    case "ArrowUp":
+      direction = "up";
+      break;
+    case "ArrowDown":
+      direction = "down";
+      break;
+    case "ArrowLeft":
+      direction = "left";
+      break;
+    case "ArrowRight":
+      direction = "right";
+      break;
+  }
+
   const newShootSfx = shootSfx.cloneNode();
   newShootSfx.play();
 
@@ -19,14 +36,20 @@ function pistol(direction) {
 
   document.querySelector(".ammo").innerHTML = ammunition;
 
-  if (bulletCollision && collidedObject != null)
-    collidedObject.possibleCollision = false;
   if (ammunition <= 0) {
     PISTOL = false;
+
+    bulletList.forEach((bullet) => bullet.destroy());
+    bulletList = [];
 
     document.querySelector(".pistol").style.display = "none";
     document.querySelector(".ammo").innerHTML = "";
   }
+}
+
+function objectShotDown() {
+  collidedObject.possibleCollision = false;
+  collidedObject.hide();
 }
 
 // // Multiple shots with shotgun
@@ -49,6 +72,7 @@ function shield() {
     document.querySelector(".shield").style.display = "none";
 
     collidedObject.possibleCollision = false;
+    collidedObject.hide();
 
     SHIELD = false;
     collidedObject = null;

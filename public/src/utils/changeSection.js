@@ -16,6 +16,11 @@ document.querySelectorAll(".btn").forEach((btn) => {
         });
         break;
 
+      case "keybindings":
+        currentSection = document.querySelector("#sectionKeybindings");
+        currentSection.style.display = "block";
+        break;
+
       case "store":
         currentSection = document.querySelector("#sectionStore");
         currentSection.style.display = "block";

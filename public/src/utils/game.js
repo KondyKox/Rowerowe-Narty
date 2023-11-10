@@ -21,15 +21,15 @@ function gameLoop() {
   }
 
   // Shoot with pistol
-  if (PISTOL) {
-    for (const bullet of bulletList) {
-      bullet.draw(ctx);
-      bullet.update();
-    }
+  for (const bullet of bulletList) {
+    bullet.draw(ctx);
+    bullet.update();
   }
 
-  // Check for collision with obstacles
+  if (PISTOL && bulletCollision()) objectShotDown();
+
   if (checkCollisions()) {
+    // Check for collision with obstacles
     if (!SHIELD) gameOver();
     else if (SHIELD) shield();
   } else {

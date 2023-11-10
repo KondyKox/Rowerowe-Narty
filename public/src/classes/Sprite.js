@@ -36,4 +36,8 @@ class Sprite {
     this.position.y += this.velocity.y;
     this.position.x += this.velocity.x;
   }
+
+  hide() {
+    this.image.src = "";
+  }
 }

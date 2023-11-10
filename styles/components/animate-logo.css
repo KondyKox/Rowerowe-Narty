@@ -20,7 +20,7 @@
   }
 }
 
-img {
+.logo {
   animation-name: animateLogo;
   animation-duration: 2s;
 }
