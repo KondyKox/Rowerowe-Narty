@@ -40,7 +40,6 @@ function pistol(key) {
     PISTOL = false;
 
     bulletList.forEach((bullet) => bullet.destroy());
-    bulletList = [];
 
     document.querySelector(".pistol").style.display = "none";
     document.querySelector(".ammo").innerHTML = "";

@@ -29,6 +29,10 @@
   display: block;
 }
 
+.active-section {
+  display: block;
+}
+
 .btn {
   border: none;
   text-align: center;

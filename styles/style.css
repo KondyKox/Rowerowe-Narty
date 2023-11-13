@@ -27,6 +27,7 @@
 body,
 html {
   font-family: Signika Negative, sans-serif;
+  overflow: hidden;
   background: var(--clr-background);
   color: var(--clr-light);
   height: 100%;

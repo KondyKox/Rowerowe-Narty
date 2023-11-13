@@ -22,23 +22,25 @@
   </head>
   <body>
     <div class="logo">
-      <img src="/img/logo.png" alt="Rowerowe Narty - logo" />
+      <img src="/img/logo.png" alt="Rowerowe Narty - logo" loading="lazy"/>
     </div>
 
     <main>
+      <!-- Main section -->
       <section id="sectionMain" class="container__section">
         <ul class="container__list">
-          <li id="play" class="btn">play</li>
-          <li id="keybindings" class="btn">key bindings</li>
+          <li id="keybindings" class="btn">play</li>
+          <li id="account" class="btn">account</li>
           <li id="store" class="btn">store</li>
           <li id="donate" class="btn">donate</li>
           <li id="credits" class="btn">credits</li>
         </ul>
       </section>
 
+      <!-- Keybindings -->
       <section id="sectionKeybindings" class="container__section">
         <div class="section__keybindings">
-          <ul class="keys__movement">
+          <ul class="keys">
             <h3>Movement -</h3>
             <li class="keys__element">
               <img src="/img/keyW.png" alt="keyW" />
@@ -54,7 +56,7 @@
             </li>
           </ul>
 
-          <ul class="keys__movement">
+          <ul class="keys">
             <h3>Shooting -</h3>
             <li class="keys__element">
               <img src="/img/keyArrowUp.png" alt="keyArrowUp" />
@@ -71,19 +73,40 @@
           </ul>
         </div>
         <ul class="container__list">
-          <li class="btn">back</li>
+          <li id="play" class="btn">play</li>
         </ul>
       </section>
 
+      <!-- Account section (user, ranking) -->
+      <section id="sectionAccount" class="container__section">
+        <div class="container__account"></div>
+        <ul class="container__list">
+          <li id="stats" class="btn">your stats</li>
+          <li id="ranking" class="btn">ranking</li>
+        </ul>
+      </section>
+
+      <!-- User stats (account sub-section) -->
+      <section id="sectionStats" class="container__section">
+        <div class="container__stats"></div>
+        <ul class="container__list">
+          <li class="btn">zaloguj</li>
+        </ul>
+      </section>
+
+      <!-- Ranking (account sub-section) -->
+      <section id="sectionRanking" class="container__section">
+        <div class="container__ranking"></div>
+      </section>
+
+      <!-- Store section -->
       <section id="sectionStore" class="container__section">
         <div class="container__store">
           <p>I'm still working on skins</p>
         </div>
-        <ul class="container__list">
-          <li class="btn">back</li>
-        </ul>
       </section>
 
+      <!-- Donate section :) -->
       <section id="sectionDonate" class="container__section">
         <div class="container__donate">
           <p>
@@ -98,19 +121,20 @@
           </p>
           <p class="thx">THX FOR MONEY <span class="heart">❤</span></p>
         </div>
-        <ul class="container__list">
-          <li class="btn">back</li>
-        </ul>
       </section>
 
+      <!-- Credits section -->
       <section id="sectionCredits" class="container__section">
         <div class="creators">
           <p>
             Konrad Ciesielski - <span class="ceo">CEO, I made everything</span>
           </p>
         </div>
+      </section>
 
-        <div class="container__credits">
+      <!-- Back button section -->
+      <section id="sectionBack" class="container__section">
+        <div class="container__back">
           <ul class="container__list">
             <li class="btn">back</li>
           </ul>

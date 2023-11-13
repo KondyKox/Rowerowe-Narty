@@ -1,3 +1,9 @@
+// // Lazy loading images
+// const loadImage = async (imagePath) => {
+//   const imageModule = await import(imagePath);
+//   return (new Image().src = imageModule.default);
+// };
+
 // Generate obstacles
 function generateObstacles(obstacleList, gameBounds, numberOfObstacles) {
   for (let i = 0; i < numberOfObstacles; i++) {
