@@ -1,4 +1,6 @@
-class Bullet extends Sprite {
+import Sprite from './Sprite.js';
+
+export default class Bullet extends Sprite {
   constructor(
     x,
     y,

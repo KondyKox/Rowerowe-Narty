@@ -1,4 +1,4 @@
-class Sprite {
+export default class Sprite {
   constructor(x, y, imageSrc, width, height) {
     this.position = {
       x: x,

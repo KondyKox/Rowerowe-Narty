@@ -1,4 +1,6 @@
-class Player extends Sprite {
+import Sprite from "./Sprite.js";
+
+export default class Player extends Sprite {
   constructor(x, y, imageSrc) {
     super(x, y, imageSrc, 150, 110);
 

@@ -1,95 +1,100 @@
+import { game } from "../main.js";
+import CollisionHandler from "../game_states/CollisionHandler.js";
+import BoostEffect from "../classes/BoostEffect.js";
+
 // Game loop function
 let gameLoopID;
 
 function gameLoop() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height);
 
   // Player movement
-  player.velocity.x = 0;
-  player.velocity.y = 0;
+  game.player.velocity.x = 0;
+  game.player.velocity.y = 0;
 
-  if (!collisionWithPuddles()) {
-    if (keys.w.pressed) player.velocity.y = -PLAYER_SPEED;
-    if (keys.s.pressed) player.velocity.y = PLAYER_SPEED;
-    if (keys.a.pressed) player.velocity.x = -PLAYER_SPEED;
-    if (keys.d.pressed) player.velocity.x = PLAYER_SPEED;
+  if (!CollisionHandler.collisionWithPuddles()) {
+    if (game.keys.w.pressed) game.player.velocity.y = -game.PLAYER_SPEED;
+    if (game.keys.s.pressed) game.player.velocity.y = game.PLAYER_SPEED;
+    if (game.keys.a.pressed) game.player.velocity.x = -game.PLAYER_SPEED;
+    if (game.keys.d.pressed) game.player.velocity.x = game.PLAYER_SPEED;
   } else {
-    if (keys.w.pressed) player.velocity.y = -SLOWED_DOWN;
-    if (keys.s.pressed) player.velocity.y = SLOWED_DOWN;
-    if (keys.a.pressed) player.velocity.x = -SLOWED_DOWN;
-    if (keys.d.pressed) player.velocity.x = SLOWED_DOWN;
+    if (game.keys.w.pressed) game.player.velocity.y = -game.SLOWED_DOWN;
+    if (game.keys.s.pressed) game.player.velocity.y = game.SLOWED_DOWN;
+    if (game.keys.a.pressed) game.player.velocity.x = -game.SLOWED_DOWN;
+    if (game.keys.d.pressed) game.player.velocity.x = game.SLOWED_DOWN;
   }
 
   // Shoot with pistol
-  for (const bullet of bulletList) {
-    bullet.draw(ctx);
+  for (const bullet of game.bulletList) {
+    bullet.draw(game.ctx);
     bullet.update();
   }
 
-  if (PISTOL && bulletCollision()) objectShotDown();
+  if (game.PISTOL && CollisionHandler.bulletCollision()) BoostEffect.objectShotDown();
 
-  if (checkCollisions()) {
+  if (CollisionHandler.checkCollisions()) {
     // Check for collision with obstacles
-    if (!SHIELD) gameOver();
-    else if (SHIELD) shield();
+    if (!game.SHIELD) gameOver();
+    else if (game.SHIELD) BoostEffect.shield();
   } else {
     // Creating obstacles
-    for (const obstacle of obstacleList) {
-      if (OBSTACLES_GRAVITY <= 7) {
-        if (score >= checkpoint + 1000) {
-          checkpoint = score;
+    for (const obstacle of game.obstacleList) {
+      if (game.OBSTACLES_GRAVITY <= 7) {
+        if (game.score >= game.checkpoint + 1000) {
+          game.checkpoint = game.score;
 
-          OBSTACLES_GRAVITY += 0.15;
+          game.OBSTACLES_GRAVITY += 0.15;
         }
       }
 
-      obstacle.draw(ctx);
+      obstacle.draw(game.ctx);
       obstacle.update();
     }
 
     // Creating puddles
-    for (const puddle of puddlesList) {
-      puddle.draw(ctx);
+    for (const puddle of game.puddlesList) {
+      puddle.draw(game.ctx);
       puddle.update();
     }
 
     // Creating police
-    for (const police of policeList) {
-      if (POLICE_SPEED <= 8) {
-        if (score >= checkpoint + 1000) {
-          checkpoint = score;
+    for (const police of game.policeList) {
+      if (game.POLICE_SPEED <= 8) {
+        if (game.score >= game.checkpoint + 1000) {
+          game.checkpoint = game.score;
 
-          POLICE_SPEED += 0.2;
+          game.POLICE_SPEED += 0.2;
         }
       }
 
-      police.draw(ctx);
+      police.draw(game.ctx);
       police.update();
     }
 
     // Creating boosts
-    for (const boost of boostsList) {
-      boost.draw(ctx);
+    for (const boost of game.boostsList) {
+      boost.draw(game.ctx);
       boost.update();
     }
 
     // Counting score
-    scoreEl[0].innerHTML = score;
+    game.scoreEl[0].innerHTML = game.score;
 
-    if (score >= bestScore) bestScoreEl[0].innerHTML = newBestScore;
-    else bestScoreEl[0].innerHTML = bestScore;
+    if (game.score >= game.bestScore)
+      game.bestScoreEl[0].innerHTML = game.newBestScore;
+    else game.bestScoreEl[0].innerHTML = game.bestScore;
 
-    score += MULTIPLIER;
-    newBestScore = score;
+    game.score += game.MULTIPLIER;
+    game.newBestScore = game.score;
 
-    coinEl.innerHTML = coins;
+    game.coinEl.innerHTML = game.coins;
 
     // Creating player
-    player.draw(ctx);
-    player.update();
+    game.player.draw(game.ctx);
+    game.player.update();
 
-    checkCollisions();
-    boostEffects();
+    CollisionHandler.checkCollisions();
+    CollisionHandler.boostEffects();
   }
 
   if (!gameIsOver) gameLoopID = requestAnimationFrame(gameLoop);
@@ -102,18 +107,18 @@ function gameOver() {
   gameIsOver = true;
 
   // Game over screen
-  canvas.style.display = "none";
-  game_over.style.display = "flex";
+  game.canvas.style.display = "none";
+  game.game_over.style.display = "flex";
 
   // Update best score
-  if (newBestScore > parseInt(bestScore))
+  if (game.newBestScore > parseInt(game.bestScore))
     localStorage.setItem("bestScore", newBestScore.toString());
 
-  scoreEl[1].innerHTML = score;
-  bestScoreEl[1].innerHTML = localStorage.getItem("bestScore");
+  game.scoreEl[1].innerHTML = game.score;
+  game.bestScoreEl[1].innerHTML = localStorage.getItem("bestScore");
 
   // Update coins
-  localStorage.setItem("coins", coins);
+  localStorage.setItem("coins", game.coins);
 
   // cancelAnimationFrame(gameLoopID); // Stop the game
 
@@ -123,3 +128,6 @@ function gameOver() {
     window.location.reload();
   });
 }
+
+// Start the game
+gameLoopID = requestAnimationFrame(gameLoop);

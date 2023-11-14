@@ -1,4 +1,6 @@
-class Obstacle extends Sprite {
+import Sprite from './Sprite.js';
+
+export default class Obstacle extends Sprite {
   constructor(x, y, imageSrc, gravity, gameBounds, obstacleList) {
     super(x, y, imageSrc, 150, 110);
 

@@ -1,4 +1,6 @@
-class Police extends Sprite {
+import Sprite from './Sprite.js';
+
+export default class Police extends Sprite {
   constructor(x, y, imageSrc, speed, direction, gameBounds, policeList) {
     super(x, y, imageSrc, 150, 110);
 
