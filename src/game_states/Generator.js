@@ -101,7 +101,7 @@ export default class Generator {
       ];
       const effect = this.randomEffect(effects);
 
-      const boostImg = `/img/${effect}.png`;
+      const boostImg = `/img/boosts/${effect}.png`;
 
       const randomX =
         Math.random() * (game.gameBounds.right - game.gameBounds.left) +
@@ -130,7 +130,7 @@ export default class Generator {
 
   // Generate bullets on shoot
   static generateBullets(game) {
-    const bulletImg = `/img/bullet.png`;
+    const bulletImg = `/img/boosts/bullet.png`;
 
     const newBullet = new Bullet(
       game.player.position.x + game.player.width / 2,

@@ -11,3 +11,49 @@
   text-shadow: 1px 1px 1px white, -1px 1px 1px white, -1px -1px 0 white,
     1px -1px 0 white;
 }
+
+.skins {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skin {
+  padding: 0 1em;
+}
+
+.skin img {
+  width: 7em;
+  height: 5em;
+  padding: 0 .25em;
+  transition: all .3s ease-in-out;
+}
+
+.skin img:hover {
+  scale: 1.2;
+  cursor: pointer;
+}
+
+.skin__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+}
+
+.skin__name {
+  color: var(--clr-red);
+}
+
+.skin__price {
+  color: var(--clr-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skin__price img {
+  width: 1.25em;
+  height: 1.25em;
+}

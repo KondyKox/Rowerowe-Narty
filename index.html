@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class="logo">
-      <img src="/img/logo.png" alt="Rowerowe Narty - logo" loading="lazy"/>
+      <img src="/img/logo.png" alt="Rowerowe Narty - logo" loading="lazy" />
     </div>
 
     <main>
@@ -43,32 +43,32 @@
           <ul class="keys">
             <h3>Movement -</h3>
             <li class="keys__element">
-              <img src="/img/keyW.png" alt="keyW" />
+              <img src="/img/keys/keyW.png" alt="keyW" />
             </li>
             <li class="keys__element">
-              <img src="/img/keyA.png" alt="keyA" />
+              <img src="/img/keys/keyA.png" alt="keyA" />
             </li>
             <li class="keys__element">
-              <img src="/img/keyS.png" alt="keyS" />
+              <img src="/img/keys/keyS.png" alt="keyS" />
             </li>
             <li class="keys__element">
-              <img src="/img/keyD.png" alt="keyD" />
+              <img src="/img/keys/keyD.png" alt="keyD" />
             </li>
           </ul>
 
           <ul class="keys">
             <h3>Shooting -</h3>
             <li class="keys__element">
-              <img src="/img/keyArrowUp.png" alt="keyArrowUp" />
+              <img src="/img/keys/keyArrowUp.png" alt="keyArrowUp" />
             </li>
             <li class="keys__element">
-              <img src="/img/keyArrowDown.png" alt="keyArrowDown" />
+              <img src="/img/keys/keyArrowDown.png" alt="keyArrowDown" />
             </li>
             <li class="keys__element">
-              <img src="/img/keyArrowLeft.png" alt="keyArrowLeft" />
+              <img src="/img/keys/keyArrowLeft.png" alt="keyArrowLeft" />
             </li>
             <li class="keys__element">
-              <img src="/img/keyArrowRight.png" alt="keyArrowRight" />
+              <img src="/img/keys/keyArrowRight.png" alt="keyArrowRight" />
             </li>
           </ul>
         </div>
@@ -102,7 +102,12 @@
       <!-- Store section -->
       <section id="sectionStore" class="container__section">
         <div class="container__store">
-          <p>I'm still working on skins</p>
+          <!-- TODO: Skins needs to be generated -->
+          <div class="skins"></div>
+          </div>
+          <p style="font-size: var(--size-lg); text-align: center;">
+            More skins after 'users accounts' update.
+          </p>
         </div>
       </section>
 
@@ -144,5 +149,7 @@
 
     <script src="/src/utils/music.js"></script>
     <script src="/src/utils/changeSection.js"></script>
+    <script src="/src/utils/skins.js"></script>
+    <script src="/src/utils/store.js"></script>
   </body>
 </html>

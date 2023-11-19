@@ -32,7 +32,11 @@ export default class GameState {
     // Player object
     const playerX = this.canvas.width / 2;
     const playerY = this.canvas.height / 1.5;
-    const playerImg = "/img/player.png";
+
+    const playerSkin = localStorage.getItem("playerSkin");
+    if (playerSkin === null) localStorage.setItem("playerSkin", "default");
+
+    const playerImg = `/img/player/player-${playerSkin}.png`;
     this.player = new Player(playerX, playerY, playerImg);
 
     // Score

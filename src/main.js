@@ -11,6 +11,8 @@ import "./classes/Bullet.js";
 
 import "./utils/eventListeners.js";
 import "./utils/music.js";
+import "./utils/skins.js";
+import "./utils/store.js"
 import "./utils/game.js";
 
 export const game = new GameState();
