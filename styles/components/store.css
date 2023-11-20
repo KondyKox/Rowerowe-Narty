@@ -22,14 +22,14 @@
   padding: 0 1em;
 }
 
-.skin img {
+.skin .skin__img {
   width: 7em;
   height: 5em;
   padding: 0 .25em;
   transition: all .3s ease-in-out;
 }
 
-.skin img:hover {
+.skin .skin__img:hover {
   scale: 1.2;
   cursor: pointer;
 }
