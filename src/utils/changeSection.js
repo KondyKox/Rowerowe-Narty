@@ -26,6 +26,11 @@ document.querySelectorAll(".btn").forEach((btn) => {
         currentSection = sectionAcc;
         break;
 
+      case "login":
+        sectionAcc.classList.remove("active-section");
+        currentSection = document.querySelector("#sectionLogin");
+        break;
+
       case "stats":
         sectionAcc.classList.remove("active-section");
         currentSection = document.querySelector("#sectionStats");

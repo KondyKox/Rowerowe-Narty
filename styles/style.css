@@ -1,7 +1,8 @@
 :root {
   /* colors */
-  --clr-background: #111;
+  --clr-background: #1f1d1d;
   --clr-light: #efefef;
+  --clr-gray: #cac2c2;
   --clr-dark: #262626;
   --clr-blue: #0f56da;
   --clr-red: #f21010;
@@ -37,6 +38,13 @@ html {
     rgba(15, 133, 224, 1) 0%,
     rgba(242, 16, 16, 1) 100%
   );
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 a {
