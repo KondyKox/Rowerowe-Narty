@@ -1,29 +1,20 @@
 import express from "express";
+import cors from "cors";
 import http from "http";
 import { Server } from "socket.io";
-import mongoose from "mongoose";
 
-import { User, Skin } from "./models/models.js";
+import connectToDatabase from "./services/database.js";
 import userRoutes from "./routes/user.routes.js";
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// URI to MongoDB database
-const uri = "mongodb://127.0.0.1:27017/rowerowe-narty";
+// Connect with MongoDB
+connectToDatabase();
 
-// Connect to database by using mongoose
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-const db = mongoose.connection;
-
-db.on("error", (error) =>
-  console.error("Connection error with MongoDB:", error)
-);
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+// CORS middleware
+app.use(cors());
 
 // JSON middleware
 app.use(express.json());
