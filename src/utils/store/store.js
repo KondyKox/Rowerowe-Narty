@@ -1,4 +1,4 @@
-import skinsData from "./skins.js";
+import skinsData from "./skins.json";
 
 // Works only on main page
 const currentURL = window.location.href;

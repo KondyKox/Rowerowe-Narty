@@ -23,14 +23,13 @@ import "./classes/BoostEffect.js";
 import "./classes/Bullet.js";
 
 // Utils
-import "./utils/changeSection.js";
-import "./utils/eventListeners.js";
-import "./utils/toggleLoginForm.js";
+import "./utils/ui/changeSection.js";
+import "./utils/game/eventListeners.js";
+import "./utils/ui/toggleLoginForm.js";
 import "./utils/auth.js";
-import "./utils/music.js";
-import "./utils/skins.js";
-import "./utils/store.js";
-import "./utils/game.js";
+import "./utils/audio/music.js";
+import "./utils/store/store.js";
+import "./utils/game/game.js";
 
 export const game = new GameState();
 

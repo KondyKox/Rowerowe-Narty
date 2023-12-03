@@ -1,5 +1,5 @@
-import { game } from "../main.js";
-import BoostEffect from "../classes/BoostEffect.js";
+import { game } from "../../main.js";
+import BoostEffect from "../../classes/BoostEffect.js";
 
 window.addEventListener("keydown", (e) => {
   const key = e.key;

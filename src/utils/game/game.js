@@ -1,6 +1,6 @@
-import { game } from "../main.js";
-import CollisionHandler from "../game_states/CollisionHandler.js";
-import BoostEffect from "../classes/BoostEffect.js";
+import { game } from "../../main.js";
+import CollisionHandler from "../../game_states/CollisionHandler.js";
+import BoostEffect from "../../classes/BoostEffect.js";
 
 // Game loop function
 let gameLoopID;
