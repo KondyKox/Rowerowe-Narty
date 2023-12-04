@@ -22,9 +22,7 @@ skinsData.forEach((skin) => {
   const priceElement = document.createElement("span");
   priceElement.classList.add("skin__price");
 
-  if (skin.price === 0) priceElement.textContent = skin.description;
-  else
-    priceElement.innerHTML = `${skin.description}: <span class="price-value">${skin.price}</span> <img src="./img/boosts/coin.png" alt="Skin price" />`;
+  priceElement.innerHTML = `Price: <span class="price-value">${skin.price}</span> <img src="./img/boosts/coin.png" alt="Skin price" />`;
 
   descriptionElement.appendChild(nameElement);
   descriptionElement.appendChild(priceElement);

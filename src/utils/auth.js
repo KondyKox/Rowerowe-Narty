@@ -3,14 +3,7 @@ import {
   sectionMain,
   sectionBack,
 } from "./ui/changeSection.js";
-import {
-  statsBtn,
-  logoutBtn,
-  loginBtn,
-  currentUser,
-  loggedInUserUI,
-  loggedOutUserUI,
-} from "./ui/userInterface.js";
+import { loggedInUserUI, loggedOutUserUI } from "./ui/userInterface.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.querySelector(".registerForm");

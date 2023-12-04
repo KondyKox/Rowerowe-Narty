@@ -54,5 +54,3 @@ export const loggedOutUserUI = () => {
   logoutBtn.style.display = "none";
   loginBtn.style.display = "block";
 };
-
-export { statsBtn, logoutBtn, loginBtn, currentUser };

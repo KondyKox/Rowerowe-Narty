@@ -3,14 +3,12 @@
     "id": 1,
     "name": "Default",
     "imgSrc": "./img/player/player-default.png",
-    "description": "Owned",
     "price": 0
   },
   {
     "id": 2,
     "name": "Invalid",
     "imgSrc": "./img/player/player-invalid.png",
-    "description": "Price: ",
     "price": 50
   }
 ]
