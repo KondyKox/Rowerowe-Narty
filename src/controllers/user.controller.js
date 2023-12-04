@@ -1,11 +1,11 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { User } from "../models/models.js";
-
 dotenv.config({ path: "../../.env" });
 
-const secretKey = process.env.SECRET_KEY;
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { User } from "../models/models.js";
+
+const secretKey = process.env.SECRET_KEY || "karmel";
 
 // Register user
 const registerUser = async (req, res) => {
@@ -73,5 +73,21 @@ const loginUser = async (req, res) => {
   }
 };
 
+// Decode token function
+const getUserInfoFromToken = async (token) => {
+  try {
+    const decodedToken = jwt.verify(token, secretKey); // secret key
+
+    // Get username
+    return {
+      userId: decodedToken.userId,
+      username: decodedToken.username,
+    };
+  } catch (error) {
+    console.error("Token verification error:", error);
+    return null;
+  }
+};
+
 // Export functions
-export { registerUser, loginUser };
+export { registerUser, loginUser, getUserInfoFromToken };

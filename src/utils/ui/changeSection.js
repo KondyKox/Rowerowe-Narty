@@ -1,3 +1,6 @@
+import { logoutUser } from "../auth.js";
+
+// Sections
 const sectionMain = document.querySelector("#sectionMain");
 const sectionAcc = document.querySelector("#sectionAccount");
 const sectionBack = document.querySelector("#sectionBack");
@@ -30,6 +33,13 @@ document.querySelectorAll(".btn").forEach((btn) => {
         sectionAcc.classList.remove("active-section");
         currentSection = document.querySelector("#sectionLogin");
         break;
+
+      case "logout":
+        logoutUser();
+        currentSection.classList.remove("active-section");
+        sectionBack.classList.remove("active-section");
+        sectionMain.style.display = "block";
+        currentSection = null;
 
       case "stats":
         sectionAcc.classList.remove("active-section");
@@ -67,3 +77,5 @@ document.querySelectorAll(".btn").forEach((btn) => {
     }
   });
 });
+
+export { currentSection, sectionMain, sectionBack };
