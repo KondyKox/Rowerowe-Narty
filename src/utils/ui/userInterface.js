@@ -1,4 +1,4 @@
-import { getUserInfoFromToken } from "../../controllers/user.controller";
+// import { getUserInfoFromToken } from "../../controllers/user.controller";
 
 const statsBtn = document.querySelector("#stats");
 const logoutBtn = document.querySelector("#logout");
@@ -7,11 +7,11 @@ const currentUser = document.querySelector(".currentUser");
 
 const userEl = document.querySelector(".user");
 
-// Get token to check if user is login
-const token = localStorage.getItem("token");
-
 // Change UI for logged in user
-if (token) {
+export const loggedInUserUI = () => {
+  // Get token to check if user is login
+  const token = localStorage.getItem("token");
+
   try {
     // Verify the token
     const decodedTokenInfo = getUserInfoFromToken(token);
@@ -35,7 +35,24 @@ if (token) {
 
     // Optionally, clear the invalid token
     localStorage.removeItem("token");
+
+    // UI for logged out user
+    currentUser.style.display = "none";
+    statsBtn.style.display = "none";
+
+    logoutBtn.style.display = "none";
+    loginBtn.style.display = "block";
   }
-}
+};
+
+// UI for logged out user
+export const loggedOutUserUI = () => {
+  // Styles
+  currentUser.style.display = "none";
+  statsBtn.style.display = "none";
+
+  logoutBtn.style.display = "none";
+  loginBtn.style.display = "block";
+};
 
 export { statsBtn, logoutBtn, loginBtn, currentUser };

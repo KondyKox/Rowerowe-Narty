@@ -1,6 +1,7 @@
 import { game } from "../../main.js";
 import CollisionHandler from "../../game_states/CollisionHandler.js";
 import BoostEffect from "../../classes/BoostEffect.js";
+// import { saveUserStats } from "../../controllers/user.controller.js";
 
 // Game loop function
 let gameLoopID;
@@ -30,7 +31,8 @@ function gameLoop() {
     bullet.update();
   }
 
-  if (game.PISTOL && CollisionHandler.bulletCollision()) BoostEffect.objectShotDown();
+  if (game.PISTOL && CollisionHandler.bulletCollision())
+    BoostEffect.objectShotDown();
 
   if (CollisionHandler.checkCollisions()) {
     // Check for collision with obstacles
@@ -103,7 +105,9 @@ function gameLoop() {
 // Finish the game
 let gameIsOver = false;
 
-function gameOver() {
+async function gameOver() {
+  if (gameIsOver) return;
+
   gameIsOver = true;
 
   // Game over screen
@@ -119,6 +123,18 @@ function gameOver() {
 
   // Update coins
   localStorage.setItem("coins", game.coins);
+
+  // Save user stats to the server
+  try {
+    await saveUserStats({
+      coins: game.coins,
+      bestScore: game.newBestScore,
+    });
+
+    console.log("User stats saved successfully!");
+  } catch (error) {
+    console.error("Error saving user stats:", error);
+  }
 
   // cancelAnimationFrame(gameLoopID); // Stop the game
 

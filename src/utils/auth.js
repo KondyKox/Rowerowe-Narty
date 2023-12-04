@@ -3,12 +3,14 @@ import {
   sectionMain,
   sectionBack,
 } from "./ui/changeSection.js";
-// import {
-//   statsBtn,
-//   logoutBtn,
-//   loginBtn,
-//   currentUser,
-// } from "./ui/userInterface.js";
+import {
+  statsBtn,
+  logoutBtn,
+  loginBtn,
+  currentUser,
+  loggedInUserUI,
+  loggedOutUserUI,
+} from "./ui/userInterface.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.querySelector(".registerForm");
@@ -65,11 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Login function
 const loginUser = async (userData) => {
-  const statsBtn = document.querySelector("#stats");
-  const logoutBtn = document.querySelector("#logout");
-  const loginBtn = document.querySelector("#login");
-  const currentUser = document.querySelector(".currentUser");
-
   try {
     const response = await fetch("http://localhost:3000/api/users/login", {
       method: "POST",
@@ -88,11 +85,8 @@ const loginUser = async (userData) => {
       sectionBack.classList.remove("active-section");
       currentSection.classList.remove("active-section");
 
-      currentUser.style.display = "block";
-      statsBtn.style.display = "block";
-
-      logoutBtn.style.display = "block";
-      loginBtn.style.display = "none";
+      // UI for logged in user
+      loggedInUserUI();
 
       console.log("Login successful!");
     } else {
@@ -105,21 +99,14 @@ const loginUser = async (userData) => {
 };
 
 // Logout function
-export const logoutUser = () => {
+export const logoutUser = async () => {
   try {
+    // await logoutUserOnServer();
+
     localStorage.removeItem("token");
 
-    const statsBtn = document.querySelector("#stats");
-    const logoutBtn = document.querySelector("#logout");
-    const loginBtn = document.querySelector("#login");
-    const currentUser = document.querySelector(".currentUser");
-
-    // Styles
-    currentUser.style.display = "none";
-    statsBtn.style.display = "none";
-
-    logoutBtn.style.display = "none";
-    loginBtn.style.display = "block";
+    // UI for logged out user
+    loggedOutUserUI();
 
     console.log("Logout successful!");
   } catch (error) {

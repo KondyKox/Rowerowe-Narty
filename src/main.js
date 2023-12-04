@@ -25,7 +25,7 @@ import "./classes/Bullet.js";
 // Utils
 import "./utils/ui/changeSection.js";
 import "./utils/ui/toggleLoginForm.js";
-// import "./utils/ui/userInterface.js";
+import "./utils/ui/userInterface.js";
 import "./utils/game/eventListeners.js";
 import "./utils/auth.js";
 import "./utils/audio/music.js";

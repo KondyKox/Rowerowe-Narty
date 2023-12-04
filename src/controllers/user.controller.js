@@ -73,6 +73,28 @@ const loginUser = async (req, res) => {
   }
 };
 
+// Save user score and coins
+const saveUserStats = async (req, res) => {
+  const { coins, bestScore } = req.body;
+  const userId = req.user._id;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) return res.status(404).json({ error: "User not found." });
+
+    user.coins = coins;
+    user.bestScore = bestScore;
+
+    await user.save();
+
+    res.status(200).json({ message: "User stats saved successfully!" });
+  } catch (error) {
+    console.error("Error saving user stats:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 // Decode token function
 const getUserInfoFromToken = async (token) => {
   try {
@@ -90,4 +112,4 @@ const getUserInfoFromToken = async (token) => {
 };
 
 // Export functions
-export { registerUser, loginUser, getUserInfoFromToken };
+export { registerUser, loginUser, saveUserStats, getUserInfoFromToken };
