@@ -33,6 +33,14 @@
   display: block;
 }
 
+#logout {
+  display: none;
+}
+
+#stats {
+  display: none;
+}
+
 .btn {
   border: none;
   text-align: center;
@@ -67,4 +75,18 @@
   margin: auto;
   list-style-type: none;
   padding: 1.5em;
+}
+
+.currentUser {
+  display: none;
+  letter-spacing: .2em;
+  font-weight: 600;
+  font-size: var(--size-xl);
+  text-align: center;
+}
+
+.user {
+  color: var(--clr-blue);
+  text-shadow: 1px 1px 1px white, -1px 1px 1px white, -1px -1px 0 white,
+    1px -1px 0 white;
 }
