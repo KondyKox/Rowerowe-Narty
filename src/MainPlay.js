@@ -1,12 +1,8 @@
+// Import in play.html (game)
+
 // CSS Styles
 import "../styles/style.css";
 import "../styles/utils.css";
-import "../styles/components/animate-logo.css";
-import "../styles/components/keybindings.css";
-import "../styles/components/store.css";
-import "../styles/components/donate.css";
-import "../styles/components/credits.css";
-import "../styles/components/login.css";
 import "../styles/components/user_interface.css";
 
 // Game States
@@ -23,14 +19,9 @@ import "./classes/BoostEffect.js";
 import "./classes/Bullet.js";
 
 // Utils
-import "./utils/ui/changeSection.js";
-import "./utils/ui/toggleLoginForm.js";
-import "./utils/ui/userInterface.js";
 import "./utils/game/eventListeners.js";
-import "./utils/auth.js";
-import "./utils/audio/music.js";
-import "./utils/store/store.js";
 import "./utils/game/game.js";
+import "./utils/audio/music.js";
 
 export const game = new GameState();
 

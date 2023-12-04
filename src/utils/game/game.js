@@ -1,4 +1,4 @@
-import { game } from "../../main.js";
+import { game } from "../../MainPlay.js";
 import CollisionHandler from "../../game_states/CollisionHandler.js";
 import BoostEffect from "../../classes/BoostEffect.js";
 // import { saveUserStats } from "../../controllers/user.controller.js";
