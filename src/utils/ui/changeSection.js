@@ -41,11 +41,6 @@ document.querySelectorAll(".btn").forEach((btn) => {
         sectionMain.style.display = "block";
         currentSection = null;
 
-      case "stats":
-        sectionAcc.classList.remove("active-section");
-        currentSection = document.querySelector("#sectionStats");
-        break;
-
       case "ranking":
         sectionAcc.classList.remove("active-section");
         currentSection = document.querySelector("#sectionRanking");

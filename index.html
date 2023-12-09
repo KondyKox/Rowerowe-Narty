@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-adsense-account" content="ca-pub-2534586073857624">
+    <meta name="google-adsense-account" content="ca-pub-2534586073857624" />
     <title>Rowerowe Narty</title>
 
     <link rel="icon" href="./img/logo.png" />
@@ -76,7 +76,6 @@
         <div class="container__account">
           <ul class="container__list">
             <li id="login" class="btn">log in</li>
-            <li id="stats" class="btn">your stats</li>
             <li id="ranking" class="btn">ranking</li>
           </ul>
         </div>
@@ -121,26 +120,18 @@
         </div>
       </section>
 
-      <!-- User stats (account sub-section) -->
-      <section id="sectionStats" class="container__section">
-        <div class="container__stats">
-          <ul class="container__list"></ul>
-        </div>
-      </section>
-
       <!-- Ranking (account sub-section) -->
       <section id="sectionRanking" class="container__section">
-        <div class="container__ranking"></div>
+        <div class="container__ranking">
+          <h2 class="ranking__header">Ranking</h2>
+          <ul class="ranking-list"></ul>
+        </div>
       </section>
 
       <!-- Store section -->
       <section id="sectionStore" class="container__section">
         <div class="container__store">
           <div class="skins"></div>
-
-          <p style="font-size: var(--size-lg); text-align: center">
-            More skins after 'users accounts' update.
-          </p>
         </div>
       </section>
 
@@ -179,7 +170,6 @@
           </ul>
         </div>
       </section>
-
     </main>
 
     <script type="module" src="./src/MainIndex.js"></script>

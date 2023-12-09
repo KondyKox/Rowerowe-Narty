@@ -1,6 +1,5 @@
 // import { getUserInfoFromToken } from "../../controllers/user.controller";
 
-const statsBtn = document.querySelector("#stats");
 const logoutBtn = document.querySelector("#logout");
 const loginBtn = document.querySelector("#login");
 const currentUser = document.querySelector(".currentUser");
@@ -24,7 +23,6 @@ export const loggedInUserUI = () => {
 
       // Styles
       currentUser.style.display = "block";
-      statsBtn.style.display = "block";
 
       logoutBtn.style.display = "block";
       loginBtn.style.display = "none";
@@ -38,7 +36,6 @@ export const loggedInUserUI = () => {
 
     // UI for logged out user
     currentUser.style.display = "none";
-    statsBtn.style.display = "none";
 
     logoutBtn.style.display = "none";
     loginBtn.style.display = "block";
@@ -49,7 +46,6 @@ export const loggedInUserUI = () => {
 export const loggedOutUserUI = () => {
   // Styles
   currentUser.style.display = "none";
-  statsBtn.style.display = "none";
 
   logoutBtn.style.display = "none";
   loginBtn.style.display = "block";

@@ -73,6 +73,19 @@ const loginUser = async (req, res) => {
   }
 };
 
+// Create ranking by best score
+const getRanking = async (req, res) => {
+  try {
+    const ranking = await User.find({}, "username best_score").sort({
+      best_score: -1,
+    });
+    res.status(200).json(ranking);
+  } catch (error) {
+    console.error("Error fetching ranking:", error);
+    res.status(500).json({ error: "Internal Sever Error" });
+  }
+};
+
 // Save user score and coins
 const saveUserStats = async (req, res) => {
   const { coins, bestScore } = req.body;
@@ -112,4 +125,4 @@ const getUserInfoFromToken = async (token) => {
 };
 
 // Export functions
-export { registerUser, loginUser, saveUserStats, getUserInfoFromToken };
+export { registerUser, loginUser, getRanking, saveUserStats, getUserInfoFromToken };

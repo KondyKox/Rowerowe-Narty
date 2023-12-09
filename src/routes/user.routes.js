@@ -2,6 +2,7 @@ import express from "express";
 import {
   registerUser,
   loginUser,
+  getRanking,
   saveUserStats,
 } from "../controllers/user.controller.js";
 
@@ -12,6 +13,9 @@ router.post("/register", registerUser);
 
 // Login endpoint
 router.post("/login", loginUser);
+
+// Ranking endpoint
+router.post("/ranking", getRanking);
 
 // Stats endpoint
 router.post("/stats", saveUserStats);
