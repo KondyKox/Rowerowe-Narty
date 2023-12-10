@@ -5,7 +5,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { User } from "../models/models.js";
 
-const secretKey = process.env.SECRET_KEY || "karmel";
+const secretKey =
+  process.env.SECRET_KEY || "EG2E386pBbzRt7Mo/YJxw4Rryv98gA6UVTdT5ok2sak=";
 
 // Register user
 const registerUser = async (req, res) => {
@@ -89,15 +90,21 @@ const getRanking = async (req, res) => {
 // Save user score and coins
 const saveUserStats = async (req, res) => {
   const { coins, bestScore } = req.body;
-  const userId = req.user._id;
 
   try {
+    if (!req.user)
+      return res
+        .status(401)
+        .json({ error: "Unauthorized. User not logged in." });
+
+    const userId = req.user._id;
+
     const user = await User.findById(userId);
 
     if (!user) return res.status(404).json({ error: "User not found." });
 
     user.coins = coins;
-    user.bestScore = bestScore;
+    user.best_score = bestScore;
 
     await user.save();
 
@@ -125,4 +132,10 @@ const getUserInfoFromToken = async (token) => {
 };
 
 // Export functions
-export { registerUser, loginUser, getRanking, saveUserStats, getUserInfoFromToken };
+export {
+  registerUser,
+  loginUser,
+  getRanking,
+  saveUserStats,
+  getUserInfoFromToken,
+};

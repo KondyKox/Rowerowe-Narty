@@ -128,7 +128,7 @@ async function gameOver() {
   try {
     await saveUserStats({
       coins: game.coins,
-      bestScore: game.newBestScore,
+      best_score: game.newBestScore,
     });
 
     console.log("User stats saved successfully!");
