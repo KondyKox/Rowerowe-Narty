@@ -10,6 +10,7 @@
   font-weight: 800;
   text-shadow: 1px 1px 1px white, -1px 1px 1px white, -1px -1px 0 white,
     1px -1px 0 white;
+  text-align: center;
 }
 
 .container__donate a {
@@ -31,5 +32,12 @@
 }
 
 .heart {
-    color: var(--clr-red);
+  color: var(--clr-red);
+}
+
+/* sm */
+@media (max-width: 475px) {
+  .container__donate {
+    font-size: var(--size-md);
+  }
 }

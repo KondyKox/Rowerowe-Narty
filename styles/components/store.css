@@ -10,6 +10,7 @@
   font-weight: 800;
   text-shadow: 1px 1px 1px white, -1px 1px 1px white, -1px -1px 0 white,
     1px -1px 0 white;
+    overflow-x: auto;
 }
 
 .skins {
@@ -56,4 +57,11 @@
 .skin__price img {
   width: 1.25em;
   height: 1.25em;
+}
+
+/* sm */
+@media (max-width: 475px) {
+  .container__store {
+    font-size: var(--size-lg);
+  }
 }
