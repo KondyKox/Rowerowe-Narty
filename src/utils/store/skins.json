@@ -10,5 +10,11 @@
     "name": "Invalid",
     "imgSrc": "./img/player/player-invalid.png",
     "price": 50
+  },
+  {
+    "id": 3,
+    "name": "Mucha",
+    "imgSrc": "./img/player/player-mucha.png",
+    "price": 100
   }
 ]
