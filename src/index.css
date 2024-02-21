@@ -60,3 +60,11 @@ img {
   height: auto;
   margin: auto;
 }
+
+ul {
+  position: relative;
+  width: 25em;
+  margin: auto;
+  list-style-type: none;
+  padding: 1.5em;
+}
