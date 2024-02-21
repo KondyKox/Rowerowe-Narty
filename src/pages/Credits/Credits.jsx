@@ -2,7 +2,7 @@ import "./Credits.css";
 
 const Credits = () => {
   return (
-    <div className="container__section">
+    <div className="container__credits">
       <div className="creators">
         <p>
           Konrad Ciesielski -{" "}

@@ -52,20 +52,6 @@
   background-color: var(--clr-gray);
 }
 
-/* .currentUser {
-  display: none;
-  letter-spacing: .2em;
-  font-weight: 600;
-  font-size: var(--size-xl);
-  text-align: center;
-}
-
-.user {
-  color: var(--clr-blue);
-  text-shadow: 1px 1px 1px var(--clr-light), -1px 1px 1px var(--clr-light), -1px -1px 0 var(--clr-light),
-    1px -1px 0 var(--clr-light);
-} */
-
 @keyframes animateLogo {
   0% {
     left: 1000px;

@@ -1,0 +1,38 @@
+.container__donate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2em;
+  font-size: var(--size-3xl);
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  text-shadow: 1px 1px 1px var(--clr-light), -1px 1px 1px white, -1px -1px 0 var(--clr-light),
+    1px -1px 0 var(--clr-light);
+  text-align: center;
+}
+
+.acc-number {
+  color: var(--clr-red);
+}
+
+.paypal {
+  color: var(--clr-blue);
+}
+
+.thx {
+  padding-top: 2em;
+  font-weight: 900;
+}
+
+.heart {
+  color: var(--clr-red);
+}
+
+/* sm */
+@media (max-width: 475px) {
+  .container__donate {
+    font-size: var(--size-md);
+  }
+}

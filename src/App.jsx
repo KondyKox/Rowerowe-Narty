@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MainMenu from "../MainMenu/MainMenu";
+import MainMenu from "./pages/MainMenu/MainMenu";
 import "./App.css";
 
 const App = () => {

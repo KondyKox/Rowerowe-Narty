@@ -1,4 +1,5 @@
 import Credits from "../Credits/Credits";
+import Donate from "../Donate/Donate";
 
 const MainMenu = ({ onClick }) => {
   return (
@@ -13,7 +14,7 @@ const MainMenu = ({ onClick }) => {
         <li id="store" className="btn">
           store
         </li>
-        <li id="donate" className="btn">
+        <li id="donate" className="btn" onClick={() => onClick(<Donate />)}>
           donate
         </li>
         <li id="credits" className="btn" onClick={() => onClick(<Credits />)}>
