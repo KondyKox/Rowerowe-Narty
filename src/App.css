@@ -37,7 +37,8 @@
   font-weight: 700;
   outline: none;
   position: relative;
-  background-color: none;
+  background: none;
+  color: var(--clr-light);
   border: solid 1px transparent;
   border-radius: 10px;
   margin-top: 0.75em;
@@ -45,11 +46,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.btn:hover,
-.btn:hover a {
+.btn:hover {
   transform: scale(1.2);
   color: var(--clr-blue);
-  background-color: var(--clr-gray);
+  background: var(--clr-gray);
 }
 
 @keyframes animateLogo {

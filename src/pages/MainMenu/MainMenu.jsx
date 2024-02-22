@@ -1,6 +1,7 @@
 import Keybindings from "../Keybindings/Keybindings";
 import Donate from "../Donate/Donate";
 import Credits from "../Credits/Credits";
+import Store from "../Store/Store";
 
 const MainMenu = ({ onClick, startGame }) => {
   return (
@@ -12,7 +13,9 @@ const MainMenu = ({ onClick, startGame }) => {
         >
           play
         </li>
-        <li className="btn">store</li>
+        <li className="btn" onClick={() => onClick(<Store />)}>
+          store
+        </li>
         <li className="btn" onClick={() => onClick(<Donate />)}>
           donate
         </li>
