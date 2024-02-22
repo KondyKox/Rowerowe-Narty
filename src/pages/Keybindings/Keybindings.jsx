@@ -1,6 +1,6 @@
 import "./Keybindings.css";
 
-const Keybindings = ({ startGame }) => {
+const Keybindings = ({ onClick }) => {
   return (
     <div className="section__keybindings">
       <ul className="keys">
@@ -35,7 +35,7 @@ const Keybindings = ({ startGame }) => {
           id="play"
           className="btn"
           onClick={() => {
-            startGame();
+            onClick();
           }}
         >
           play

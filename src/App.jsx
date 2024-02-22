@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import MainMenu from "./pages/MainMenu/MainMenu";
+import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import "./App.css";
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
   // Start the game
   const handleStartGame = () => {
     handleLogoClass();
-    
+
     setTimeout(() => {
       setGameStarted(true);
       setCurrentSection(null);
@@ -29,6 +30,8 @@ const App = () => {
 
   return (
     <>
+      <MusicPlayer isGameStarted={isGameStarted} />
+
       {!isGameStarted ? (
         <div className={logoClass}>
           <img
