@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import MainMenu from "./pages/MainMenu/MainMenu";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
+import GameCanvas from "./components/Game/GameCanvas/GameCanvas";
 import "./App.css";
 
 const App = () => {
@@ -24,8 +25,15 @@ const App = () => {
 
     setTimeout(() => {
       setGameStarted(true);
-      setCurrentSection(null);
+      setCurrentSection(<GameCanvas backToMenu={handleBackToMenu} />);
     }, 2000);
+  };
+
+  // Back to menu
+  const handleBackToMenu = () => {
+    setLogoClass("logo");
+    setCurrentSection(null);
+    setGameStarted(false);
   };
 
   return (
