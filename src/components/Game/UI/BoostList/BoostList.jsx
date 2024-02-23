@@ -9,19 +9,17 @@ const BoostList = () => {
   return (
     <ul className="ui__list">
       {boosts.map((boost, index) => {
-        return (
+        return boost.isActive ? (
           <li key={index} className={`ui__boost ${boost.className}`}>
             <img src={boost.src} alt={boost.name} className="boost" />
             {boost.name === "Pistol" ? (
               <sup className="ammo">{pistolAmmo}</sup>
+            ) : boost.name === "Coins" ? (
+              <sup className="coin">{coins}</sup>
             ) : null}
           </li>
-        );
+        ) : null;
       })}
-      <li className="ui__coins">
-        <img src="./img/boosts/coin.png" alt="Coins" className="boost coin" />
-        <sup className="coins">{coins}</sup>
-      </li>
     </ul>
   );
 };

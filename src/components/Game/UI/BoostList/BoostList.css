@@ -7,15 +7,6 @@
   height: auto;
 }
 
-.ui__coins {
-  display: flex;
-}
-
-.ui__coins img {
-  width: 3em;
-  height: auto;
-}
-
 .coin {
   display: block;
 }
