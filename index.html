@@ -1,13 +1,185 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="./img/logo.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-adsense-account" content="ca-pub-2534586073857624" />
     <title>Rowerowe Narty</title>
+
+    <link rel="icon" href="./img/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Signika+Negative:300"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
+    <!-- GAME -->
+    <nav class="navbar">
+      <div class="nav__logo">
+        <a href="index.html"
+          ><img src="./img/logo.png" alt="Rowerowe Narty - logo"
+        /></a>
+      </div>
+      <div class="nav__ui">
+        <ul class="ui__boosts ui__list">
+          <li class="ui__element ui__boost">
+            <img
+              src="./img/boosts/speed.png"
+              alt="Speed boost"
+              class="boost speed"
+            />
+          </li>
+          <li class="ui__element ui__boost">
+            <img
+              src="./img/boosts/pistol.png"
+              alt="Pistol"
+              class="boost pistol"
+            />
+            <sup class="ammo"></sup>
+          </li>
+          <li class="ui__element ui__boost">
+            <img
+              src="./img/boosts/multiplier.png"
+              alt="Score multiplier"
+              class="boost multi"
+            />
+          </li>
+          <li class="ui__element ui__boost">
+            <img
+              src="./img/boosts/shield.png"
+              alt="Shield"
+              class="boost shield"
+            />
+          </li>
+          <li class="ui__element ui__boost">
+            <img src="./img/boosts/coin.png" alt="Coins" class="boost coin" />
+            <sup class="coins"></sup>
+          </li>
+        </ul>
+
+        <ul class="ui__score ui__list">
+          <li class="ui__element">Score: <span class="score"></span></li>
+          <li class="ui__element">
+            The Best Score: <span class="best-score"></span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <canvas></canvas>
+
+    <div class="game-over">
+      <h1>YOU NOOB!</h1>
+      <div class="game-over__scores">
+        <p class="game-over__score">Score: <span class="score"></span></p>
+        <p class="game-over__best-score">
+          Best Score: <span class="best-score"></span>
+        </p>
+      </div>
+      <p>Click to <span class="play-again">play again</span>.</p>
+    </div>
+
+    <!-- MAIN MENU -->
+    <div class="logo">
+      <img src="./img/logo.png" alt="Rowerowe Narty - logo" loading="lazy" />
+    </div>
+
+    <main>
+      <!-- Main section -->
+      <section id="sectionMain" class="container__section">
+        <ul class="container__list">
+          <li id="keybindings" class="btn">play</li>
+          <li id="store" class="btn">store</li>
+          <li id="donate" class="btn">donate</li>
+          <li id="credits" class="btn">credits</li>
+        </ul>
+
+        <div class="currentUser">
+          <span>Current user: <span class="user"></span></span>
+        </div>
+      </section>
+
+      <!-- Keybindings -->
+      <section id="sectionKeybindings" class="container__section">
+        <div class="section__keybindings">
+          <ul class="keys">
+            <h3>Movement:</h3>
+            <li class="keys__element">W</li>
+            <li class="keys__element">S</li>
+            <li class="keys__element">A</li>
+            <li class="keys__element">D</li>
+          </ul>
+
+          <ul class="keys">
+            <h3>Shooting:</h3>
+            <li class="keys__element">
+              &uarr;
+              <!-- Arrow Up -->
+            </li>
+            <li class="keys__element">
+              &darr;
+              <!-- Arrow Down -->
+            </li>
+            <li class="keys__element">
+              &larr;
+              <!-- Arrow Left -->
+            </li>
+            <li class="keys__element">
+              &rarr;
+              <!-- Arrow Right -->
+            </li>
+          </ul>
+          <ul class="container__list">
+            <li id="play" class="btn">play</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Store section -->
+      <section id="sectionStore" class="container__section">
+        <div class="container__store">
+          <div class="skins"></div>
+        </div>
+      </section>
+
+      <!-- Donate section :) -->
+      <section id="sectionDonate" class="container__section">
+        <div class="container__donate">
+          <p>
+            Here's my account number:
+            <span class="acc-number">PL39109028350000000146579429</span>.
+          </p>
+          <p>
+            And there is my
+            <a href="https://www.paypal.com/paypalme/megakoks" target="_blank"
+              ><span class="paypal">PayPal</span></a
+            >.
+          </p>
+          <p class="thx">THX FOR MONEY <span class="heart">❤</span></p>
+        </div>
+      </section>
+
+      <!-- Credits section -->
+      <section id="sectionCredits" class="container__section">
+        <div class="creators">
+          <p>
+            Konrad Ciesielski - <span class="ceo">CEO, I made everything</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- Back button section -->
+      <section id="sectionBack" class="container__section">
+        <div class="container__back">
+          <ul class="container__list">
+            <li class="btn">back</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/MainIndex.js"></script>
   </body>
 </html>

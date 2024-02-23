@@ -1,0 +1,16 @@
+.creators {
+  text-align: center;
+  padding: 2em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: var(--size-3xl);
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 1px 1px 1px var(--clr-light), -1px 1px 1px var(--clr-light),
+    -1px -1px 0 var(--clr-light), 1px -1px 0 var(--clr-light);
+}
+
+.ceo {
+  color: var(--clr-blue);
+}

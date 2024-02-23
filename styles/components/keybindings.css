@@ -1,0 +1,31 @@
+.keys {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+h3 {
+  margin-right: 1em;
+}
+
+.keys__element {
+  font-size: var(--size-xl);
+  font-weight: 600;
+  padding: 0.5em;
+  text-shadow: 1px 1px 1px var(--clr-light), -1px 1px 1px var(--clr-light),
+    -1px -1px 0 var(--clr-light), 1px -1px 0 var(--clr-light);
+  border: 1px solid var(--clr-red);
+  border-radius: 10px;
+  margin: 0.5em;
+  width: 30px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.keys__element:hover {
+  cursor: pointer;
+  background: var(--clr-red);
+  color: var(--clr-blue);
+  filter: drop-shadow(0 0 1em var(--clr-red));
+}

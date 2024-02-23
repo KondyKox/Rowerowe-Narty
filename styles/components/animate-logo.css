@@ -1,0 +1,31 @@
+@keyframes animateLogo {
+  0% {
+    left: 1000px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+@keyframes animateLogo2 {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  100% {
+    left: -1200px;
+    top: 0px;
+  }
+}
+
+.logo {
+  animation-name: animateLogo;
+  animation-duration: 2s;
+}
+
+.animate {
+  animation-name: animateLogo2;
+  animation-duration: 2s;
+}
