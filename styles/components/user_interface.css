@@ -13,6 +13,7 @@ body {
 
 .nav__logo {
   padding: 1.25em;
+  cursor: pointer;
 }
 
 .nav__logo img {
@@ -54,7 +55,7 @@ body {
 .game-over {
   font-size: var(--size-4xl);
   font-weight: 800;
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

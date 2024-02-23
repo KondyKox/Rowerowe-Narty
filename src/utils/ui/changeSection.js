@@ -1,6 +1,8 @@
+import { game } from "../../main";
+import generateGameUI from "./gameUI";
+
 // Sections
 const sectionMain = document.querySelector("#sectionMain");
-const sectionAcc = document.querySelector("#sectionAccount");
 const sectionBack = document.querySelector("#sectionBack");
 const logo = document.querySelector(".logo");
 let currentSection = null;
@@ -15,26 +17,15 @@ document.querySelectorAll(".btn").forEach((btn) => {
       case "play":
         logo.classList.add("animate");
         logo.addEventListener("animationend", () => {
-          window.location.href = "/play.html";
+          logo.classList.remove("animate");
+          document.querySelector("main").style.display = "none";
+          game.isGameStarted = true;
+          generateGameUI();
         });
         break;
 
       case "keybindings":
         currentSection = document.querySelector("#sectionKeybindings");
-        break;
-
-      case "account":
-        currentSection = sectionAcc;
-        break;
-
-      case "login":
-        sectionAcc.classList.remove("active-section");
-        currentSection = document.querySelector("#sectionLogin");
-        break;
-
-      case "ranking":
-        sectionAcc.classList.remove("active-section");
-        currentSection = document.querySelector("#sectionRanking");
         break;
 
       case "store":

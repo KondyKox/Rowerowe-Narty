@@ -1,11 +1,9 @@
-import { game } from "../../MainPlay.js";
-import CollisionHandler from "../../game_states/CollisionHandler.js";
+import { game } from "../../main.js";
+import CollisionHandler from "../../classes/game_states/CollisionHandler.js";
 import BoostEffect from "../../classes/BoostEffect.js";
-// import { saveUserStats } from "../../controllers/user.controller.js";
+import { gameOverScreen } from "../ui/gameUI.js";
 
 // Game loop function
-let gameLoopID;
-
 function gameLoop() {
   game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height);
 
@@ -99,20 +97,17 @@ function gameLoop() {
     CollisionHandler.boostEffects();
   }
 
-  if (!gameIsOver) gameLoopID = requestAnimationFrame(gameLoop);
+  if (!game.gameIsOver) requestAnimationFrame(gameLoop);
 }
 
 // Finish the game
-let gameIsOver = false;
-
 async function gameOver() {
-  if (gameIsOver) return;
+  if (game.gameIsOver) return;
 
-  gameIsOver = true;
+  game.gameIsOver = true;
 
   // Game over screen
-  game.canvas.style.display = "none";
-  game.game_over.style.display = "flex";
+  gameOverScreen();
 
   // Update best score
   if (game.newBestScore > parseInt(game.bestScore))
@@ -136,8 +131,6 @@ async function gameOver() {
     console.error("Error saving user stats:", error);
   }
 
-  // cancelAnimationFrame(gameLoopID); // Stop the game
-
   // Start the game again
   document.addEventListener("click", () => {
     // Reload page to start again
@@ -146,4 +139,4 @@ async function gameOver() {
 }
 
 // Start the game
-gameLoopID = requestAnimationFrame(gameLoop);
+requestAnimationFrame(gameLoop);

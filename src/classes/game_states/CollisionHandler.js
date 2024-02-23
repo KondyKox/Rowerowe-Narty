@@ -1,4 +1,4 @@
-import { game } from "../MainPlay.js";
+import { game } from "../../main.js";
 import BoostEffect from "../BoostEffect.js";
 
 export default class CollisionHandler {

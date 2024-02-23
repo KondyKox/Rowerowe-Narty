@@ -3,10 +3,12 @@ import Player from "../Player.js";
 
 export default class GameState {
   constructor() {
+    this.isGameStarted = false;
+    this.isGameOver = false;
+
     // Game context
     this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
-    this.game_over = document.querySelector(".game-over");
 
     // Navbar height for top bound
     const navHeight = document.querySelector(".navbar").offsetHeight;
