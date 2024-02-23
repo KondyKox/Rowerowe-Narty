@@ -1,40 +1,25 @@
-import { useState, useEffect } from "react";
-import UI from "../UI/Navbar/Navbar";
-import GameOver from "../UI/GameOver/GameOver";
+import { useEffect, useRef, useState } from "react";
 
-const GameCanvas = ({ backToMenu }) => {
-  const [isGameOver, setGameOver] = useState(false);
-  const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(
-    localStorage.getItem("bestScore") || 0
-  );
+const GameCanvas = ({ gameOver }) => {
+  const canvasRef = useRef(null);
+  const [canvasWidth, setCanvasWidth] = useState(window.innerWidth);
+  const [canvasHeight, setCanvasHeight] = useState(window.innerHeight);
 
   useEffect(() => {
-    if (score > bestScore) {
-      localStorage.setItem("bestScore", score);
-      setBestScore(score);
-    }
-  }, [score, bestScore]);
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
 
-  // Increment score
-  const incrementScore = () => {
-    setScore((prevScore) => prevScore + 1);
-  };
+    // Resize canvas
+    const resizeCanvas = () => {
+      setCanvasWidth(window.innerWidth);
+      setCanvasHeight(window.innerHeight);
+    };
 
-  // Game Over
-  const handleGameOver = () => {
-    setGameOver(true);
-  };
+    window.addEventListener("resize", resizeCanvas);
+  });
 
   return (
-    <>
-      <UI onClick={backToMenu} score={score} bestScore={bestScore} />
-      {isGameOver ? (
-        <GameOver score={score} bestScore={bestScore} />
-      ) : (
-        <canvas></canvas>
-      )}
-    </>
+    <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight}></canvas>
   );
 };
 

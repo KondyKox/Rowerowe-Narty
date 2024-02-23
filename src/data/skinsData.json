@@ -2,19 +2,19 @@
   {
     "id": 1,
     "name": "Default",
-    "imgSrc": "./img/player/player-default.png",
+    "imgSrc": "./img/player/default.png",
     "price": 0
   },
   {
     "id": 2,
     "name": "Invalid",
-    "imgSrc": "./img/player/player-invalid.png",
+    "imgSrc": "./img/player/invalid.png",
     "price": 50
   },
   {
     "id": 3,
     "name": "Mucha",
-    "imgSrc": "./img/player/player-mucha.png",
+    "imgSrc": "./img/player/mucha.png",
     "price": 100
   }
 ]

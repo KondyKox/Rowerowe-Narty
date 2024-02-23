@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MainMenu from "./pages/MainMenu/MainMenu";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
-import GameCanvas from "./components/Game/GameCanvas/GameCanvas";
+import GameScreen from "./components/Game/GameScreen/GameScreen";
 import "./App.css";
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
 
     setTimeout(() => {
       setGameStarted(true);
-      setCurrentSection(<GameCanvas backToMenu={handleBackToMenu} />);
+      setCurrentSection(<GameScreen backToMenu={handleBackToMenu} />);
     }, 2000);
   };
 
