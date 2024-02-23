@@ -1,8 +1,8 @@
-import { game } from "../../main";
-import generateGameUI from "./gameUI";
+import renderSkins from "../store/store";
 
 // Sections
 const sectionMain = document.querySelector("#sectionMain");
+const sectionAcc = document.querySelector("#sectionAccount");
 const sectionBack = document.querySelector("#sectionBack");
 const logo = document.querySelector(".logo");
 let currentSection = null;
@@ -17,10 +17,7 @@ document.querySelectorAll(".btn").forEach((btn) => {
       case "play":
         logo.classList.add("animate");
         logo.addEventListener("animationend", () => {
-          logo.classList.remove("animate");
-          document.querySelector("main").style.display = "none";
-          game.isGameStarted = true;
-          generateGameUI();
+          window.location.href = "./play.html";
         });
         break;
 
@@ -30,6 +27,7 @@ document.querySelectorAll(".btn").forEach((btn) => {
 
       case "store":
         currentSection = document.querySelector("#sectionStore");
+        renderSkins();
         break;
 
       case "donate":

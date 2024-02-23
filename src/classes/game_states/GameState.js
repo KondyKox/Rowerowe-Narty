@@ -3,12 +3,10 @@ import Player from "../Player.js";
 
 export default class GameState {
   constructor() {
-    this.isGameStarted = false;
-    this.isGameOver = false;
-
     // Game context
     this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
+    this.game_over = document.querySelector(".game-over");
 
     // Navbar height for top bound
     const navHeight = document.querySelector(".navbar").offsetHeight;
@@ -38,7 +36,7 @@ export default class GameState {
     const playerSkin = localStorage.getItem("playerSkin");
     if (playerSkin === null) localStorage.setItem("playerSkin", "default");
 
-    const playerImg = `./img/player/player-${playerSkin}.png`;
+    const playerImg = `./img/player/${playerSkin}.png`;
     this.player = new Player(playerX, playerY, playerImg);
 
     // Score

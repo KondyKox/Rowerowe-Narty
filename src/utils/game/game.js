@@ -1,7 +1,9 @@
-import { game } from "../../main.js";
+import { game } from "../../MainPlay.js";
 import CollisionHandler from "../../classes/game_states/CollisionHandler.js";
 import BoostEffect from "../../classes/BoostEffect.js";
-import { gameOverScreen } from "../ui/gameUI.js";
+import gameOverScreen from "../ui/gameOver.js";
+
+let gameIsOver = false;
 
 // Game loop function
 function gameLoop() {
@@ -78,16 +80,16 @@ function gameLoop() {
     }
 
     // Counting score
-    game.scoreEl[0].innerHTML = game.score;
+    game.scoreEl[0].textContent = game.score;
 
     if (game.score >= game.bestScore)
-      game.bestScoreEl[0].innerHTML = game.newBestScore;
-    else game.bestScoreEl[0].innerHTML = game.bestScore;
+      game.bestScoreEl[0].textContent = game.newBestScore;
+    else game.bestScoreEl[0].textContent = game.bestScore;
 
     game.score += game.MULTIPLIER;
     game.newBestScore = game.score;
 
-    game.coinEl.innerHTML = game.coins;
+    game.coinEl.textContent = game.coins;
 
     // Creating player
     game.player.draw(game.ctx);
@@ -97,14 +99,14 @@ function gameLoop() {
     CollisionHandler.boostEffects();
   }
 
-  if (!game.gameIsOver) requestAnimationFrame(gameLoop);
+  if (!gameIsOver) requestAnimationFrame(gameLoop);
 }
 
 // Finish the game
-async function gameOver() {
-  if (game.gameIsOver) return;
+function gameOver() {
+  if (gameIsOver) return;
 
-  game.gameIsOver = true;
+  gameIsOver = true;
 
   // Game over screen
   gameOverScreen();
@@ -113,23 +115,12 @@ async function gameOver() {
   if (game.newBestScore > parseInt(game.bestScore))
     localStorage.setItem("bestScore", newBestScore.toString());
 
-  game.scoreEl[1].innerHTML = game.score;
-  game.bestScoreEl[1].innerHTML = localStorage.getItem("bestScore");
+  document.querySelector(".score__over").textContent = game.score;
+  document.querySelector(".best-score__over").textContent =
+    localStorage.getItem("bestScore");
 
   // Update coins
   localStorage.setItem("coins", game.coins);
-
-  // Save user stats to the server
-  try {
-    await saveUserStats({
-      coins: game.coins,
-      best_score: game.newBestScore,
-    });
-
-    console.log("User stats saved successfully!");
-  } catch (error) {
-    console.error("Error saving user stats:", error);
-  }
 
   // Start the game again
   document.addEventListener("click", () => {

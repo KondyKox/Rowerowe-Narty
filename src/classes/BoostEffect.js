@@ -1,6 +1,6 @@
 import Sprite from "./Sprite.js";
 import Generator from "./game_states/Generator.js";
-import { game } from "../main.js";
+import { game } from "../MainPlay.js";
 
 export default class BoostEffect extends Sprite {
   constructor(

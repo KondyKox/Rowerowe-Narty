@@ -1,37 +1,32 @@
 [
   {
     "id": 1,
-    "name": "Speed boost",
+    "name": "speed_boost",
     "src": "./img/boosts/speed.png",
-    "className": "speed",
     "isActive": false
   },
   {
     "id": 2,
-    "name": "Pistol",
+    "name": "pistol",
     "src": "./img/boosts/pistol.png",
-    "className": "pistol",
     "isActive": false
   },
   {
     "id": 3,
-    "name": "Score multiplier",
+    "name": "score_multiplier",
     "src": "./img/boosts/multiplier.png",
-    "className": "multi",
     "isActive": false
   },
   {
     "id": 4,
-    "name": "Shield",
+    "name": "shield",
     "src": "./img/boosts/shield.png",
-    "className": "shield",
     "isActive": false
   },
   {
     "id": 5,
-    "name": "Coins",
+    "name": "coin",
     "src": "./img/boosts/coin.png",
-    "className": "coins",
     "isActive": true
   }
 ]
