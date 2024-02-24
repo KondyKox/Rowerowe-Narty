@@ -86,8 +86,7 @@ function generateScoreSection() {
 export default function generateNavbar() {
   if (isNavbarRendered) return;
 
-  const navBar = document.createElement("nav");
-  navBar.classList.add("navbar");
+  const navBar = document.querySelector(".navbar");
 
   navBar.appendChild(generateLogo());
   const uiDiv = document.createElement("div");
@@ -97,7 +96,6 @@ export default function generateNavbar() {
   uiDiv.appendChild(generateScoreSection());
 
   navBar.appendChild(uiDiv);
-  document.body.insertBefore(navBar, document.body.firstChild);
 
   isNavbarRendered = true;
 }
