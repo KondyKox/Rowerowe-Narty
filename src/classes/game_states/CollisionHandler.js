@@ -1,47 +1,59 @@
-import { game } from "../../MainPlay.js";
+import { gameState, soundManager, gameCanvas } from "../../MainPlay.js";
 import BoostEffect from "../BoostEffect.js";
 
 export default class CollisionHandler {
   static checkCollisions() {
     // Check for collision with game bounds
-    if (game.player.position.y <= game.gameBounds.top)
-      game.player.position.y = game.gameBounds.top;
-    if (game.player.position.y + game.player.height >= game.gameBounds.bottom)
-      game.player.position.y = game.gameBounds.bottom - game.player.height;
-    if (game.player.position.x <= game.gameBounds.left)
-      game.player.position.x = game.gameBounds.left;
-    if (game.player.position.x + game.player.width >= game.gameBounds.right)
-      game.player.position.x = game.gameBounds.right - game.player.width;
+    if (gameCanvas.player.position.y <= gameCanvas.gameBounds.top)
+      gameCanvas.player.position.y = gameCanvas.gameBounds.top;
+    if (
+      gameCanvas.player.position.y + gameCanvas.player.height >=
+      gameCanvas.gameBounds.bottom
+    )
+      gameCanvas.player.position.y =
+        gameCanvas.gameBounds.bottom - gameCanvas.player.height;
+    if (gameCanvas.player.position.x <= gameCanvas.gameBounds.left)
+      gameCanvas.player.position.x = gameCanvas.gameBounds.left;
+    if (
+      gameCanvas.player.position.x + gameCanvas.player.width >=
+      gameCanvas.gameBounds.right
+    )
+      gameCanvas.player.position.x =
+        gameCanvas.gameBounds.right - gameCanvas.player.width;
 
     // Check for collision with obstacles
-    for (const obstacle of game.obstacleList) {
+    for (const obstacle of gameState.obstacleList) {
       if (
-        game.player.position.y < obstacle.position.y + obstacle.height &&
-        game.player.position.y + game.player.height > obstacle.position.y &&
-        game.player.position.x < obstacle.position.x + obstacle.width &&
-        game.player.position.x + game.player.width > obstacle.position.x
+        gameCanvas.player.position.y < obstacle.position.y + obstacle.height &&
+        gameCanvas.player.position.y + gameCanvas.player.height >
+          obstacle.position.y &&
+        gameCanvas.player.position.x < obstacle.position.x + obstacle.width &&
+        gameCanvas.player.position.x + gameCanvas.player.width >
+          obstacle.position.x
       )
         if (obstacle.possibleCollision) {
-          game.collidedObject = obstacle;
+          gameState.collidedObject = obstacle;
 
-          game.chickenSfx.play();
+          soundManager.chickenSfx.play();
 
           return true;
         }
     }
 
     // Check for collision with police
-    for (const police of game.policeList) {
+    for (const police of gameState.policeList) {
       if (
-        game.player.position.y < police.position.y + police.height &&
-        game.player.position.y + game.player.height > police.position.y &&
-        game.player.position.x < police.position.x + police.width &&
-        game.player.position.x + game.player.width > police.position.x
+        gameCanvas.player.position.y < police.position.y + police.height &&
+        gameCanvas.player.position.y + gameCanvas.player.height >
+          police.position.y &&
+        gameCanvas.player.position.x < police.position.x + police.width &&
+        gameCanvas.player.position.x + gameCanvas.player.width >
+          police.position.x
       )
         if (police.possibleCollision) {
-          game.collidedObject = police;
+          gameState.collidedObject = police;
 
-          game.policeSfx.play();
+          soundManager.policeSfx.play();
 
           return true;
         }
@@ -50,14 +62,16 @@ export default class CollisionHandler {
 
   // Check for collision with puddles
   static collisionWithPuddles() {
-    for (const puddle of game.puddlesList) {
+    for (const puddle of gameState.puddlesList) {
       if (
-        game.player.position.y < puddle.position.y + puddle.height &&
-        game.player.position.y + game.player.height > puddle.position.y &&
-        game.player.position.x < puddle.position.x + puddle.width &&
-        game.player.position.x + game.player.width > puddle.position.x
+        gameCanvas.player.position.y < puddle.position.y + puddle.height &&
+        gameCanvas.player.position.y + gameCanvas.player.height >
+          puddle.position.y &&
+        gameCanvas.player.position.x < puddle.position.x + puddle.width &&
+        gameCanvas.player.position.x + gameCanvas.player.width >
+          puddle.position.x
       ) {
-        game.puddleSfx.play();
+        soundManager.puddleSfx.play();
 
         return true;
       }
@@ -66,12 +80,14 @@ export default class CollisionHandler {
 
   // Check for collision with boost effects
   static boostEffects() {
-    for (const boost of game.boostsList) {
+    for (const boost of gameState.boostsList) {
       if (
-        game.player.position.y < boost.position.y + boost.height &&
-        game.player.position.y + game.player.height > boost.position.y &&
-        game.player.position.x < boost.position.x + boost.width &&
-        game.player.position.x + game.player.width > boost.position.x
+        gameCanvas.player.position.y < boost.position.y + boost.height &&
+        gameCanvas.player.position.y + gameCanvas.player.height >
+          boost.position.y &&
+        gameCanvas.player.position.x < boost.position.x + boost.width &&
+        gameCanvas.player.position.x + gameCanvas.player.width >
+          boost.position.x
       ) {
         const effect = boost.effect;
 
@@ -80,19 +96,19 @@ export default class CollisionHandler {
             BoostEffect.speed();
             boost.destroy();
             setTimeout(() => {
-              game.PLAYER_SPEED = game.DEFAULT_SPEED;
+              gameCanvas.PLAYER_SPEED = gameState.DEFAULT_SPEED;
               document.querySelector(".speed").style.display = "none";
             }, 5000);
             break;
 
           case "pistol":
-            game.pistolSfx.play();
+            soundManager.pistolSfx.play();
 
-            game.ammunition = 10;
-            game.PISTOL = true;
+            gameState.ammunition = 10;
+            gameState.PISTOL = true;
 
             document.querySelector(".pistol").style.display = "block";
-            document.querySelector(".ammo").textContent = game.ammunition;
+            document.querySelector(".ammo").textContent = gameState.ammunition;
             boost.destroy();
             break;
 
@@ -105,23 +121,23 @@ export default class CollisionHandler {
             BoostEffect.multiplier();
             boost.destroy();
             setTimeout(() => {
-              game.MULTIPLIER = 1;
+              gameState.MULTIPLIER = 1;
               document.querySelector(".multi").style.display = "none";
             }, 5000);
             break;
 
           case "shield":
-            game.shieldSfx.play();
+            soundManager.shieldSfx.play();
 
-            game.SHIELD = true;
+            gameState.SHIELD = true;
             document.querySelector(".shield").style.display = "block";
             boost.destroy();
             break;
 
           case "coin":
-            game.coinSfx.play();
+            soundManager.coinSfx.play();
 
-            game.coins++;
+            gameState.coins++;
             boost.destroy();
             break;
 
@@ -134,30 +150,30 @@ export default class CollisionHandler {
 
   // Bullets collisions with objects
   static bulletCollision() {
-    for (const bullet of game.bulletList) {
+    for (const bullet of gameState.bulletList) {
       // Check collisions with obstacles
-      for (const obstacle of game.obstacleList) {
+      for (const obstacle of gameState.obstacleList) {
         if (
           bullet.position.y < obstacle.position.y + obstacle.height &&
           bullet.position.y + bullet.height > obstacle.position.y &&
           bullet.position.x < obstacle.position.x + obstacle.width &&
           bullet.position.x + bullet.width > obstacle.position.x
         ) {
-          game.collidedObject = obstacle;
+          gameState.collidedObject = obstacle;
           bullet.hide();
           return true;
         }
       }
 
       // Check collisions with police
-      for (const police of game.policeList) {
+      for (const police of gameState.policeList) {
         if (
           bullet.position.y < police.position.y + police.height &&
           bullet.position.y + bullet.height > police.position.y &&
           bullet.position.x < police.position.x + police.width &&
           bullet.position.x + bullet.width > police.position.x
         ) {
-          game.collidedObject = police;
+          gameState.collidedObject = police;
           bullet.hide();
           return true;
         }

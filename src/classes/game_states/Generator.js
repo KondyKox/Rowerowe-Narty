@@ -1,4 +1,5 @@
 // Generator.js
+import { gameCanvas } from "../../MainPlay.js";
 import Obstacle from "../Obstacle.js";
 import BoostEffect from "../BoostEffect.js";
 import Police from "../Police.js";
@@ -11,17 +12,18 @@ export default class Generator {
       const obstacleImg = "./img/enemy.png";
 
       const randomX =
-        Math.random() * (game.gameBounds.right - game.gameBounds.left) +
-        game.gameBounds.left;
+        Math.random() *
+          (gameCanvas.gameBounds.right - gameCanvas.gameBounds.left) +
+        gameCanvas.gameBounds.left;
 
       const newObstacle = new Obstacle(
         randomX,
-        game.gameBounds.top - 10,
+        gameCanvas.gameBounds.top - 10,
         obstacleImg,
         game.OBSTACLES_GRAVITY,
         150,
         110,
-        game.gameBounds,
+        gameCanvas.gameBounds,
         game.obstacleList
       );
 
@@ -37,17 +39,18 @@ export default class Generator {
       const puddleImg = `./img/puddle${number}.png`;
 
       const randomX =
-        Math.random() * (game.gameBounds.right - game.gameBounds.left) +
-        game.gameBounds.left;
+        Math.random() *
+          (gameCanvas.gameBounds.right - gameCanvas.gameBounds.left) +
+        gameCanvas.gameBounds.left;
 
       const newPuddle = new Obstacle(
         randomX,
-        game.gameBounds.top - 10,
+        gameCanvas.gameBounds.top - 10,
         puddleImg,
         2,
         150,
         110,
-        game.gameBounds,
+        gameCanvas.gameBounds,
         game.puddlesList
       );
 
@@ -58,23 +61,26 @@ export default class Generator {
   // Generate police
   static generatePolice(game) {
     for (let i = 0; i < game.numberOfPolice; i++) {
-      const policeX = this.getX(game.gameBounds.left, game.gameBounds.right).x;
+      const policeX = this.getX(
+        gameCanvas.gameBounds.left,
+        gameCanvas.gameBounds.right
+      ).x;
       const direction = this.getX(
-        game.gameBounds.left,
-        game.gameBounds.right
+        gameCanvas.gameBounds.left,
+        gameCanvas.gameBounds.right
       ).direction;
 
       const policeImg = "./img/police.png";
 
       const newPolice = new Police(
         policeX,
-        game.player.position.y,
+        gameCanvas.player.position.y,
         policeImg,
         game.POLICE_SPEED,
         direction,
         150,
         110,
-        game.gameBounds,
+        gameCanvas.gameBounds,
         game.policeList
       );
 
@@ -104,17 +110,18 @@ export default class Generator {
       const boostImg = `./img/boosts/${effect}.png`;
 
       const randomX =
-        Math.random() * (game.gameBounds.right - game.gameBounds.left) +
-        game.gameBounds.left;
+        Math.random() *
+          (gameCanvas.gameBounds.right - gameCanvas.gameBounds.left) +
+        gameCanvas.gameBounds.left;
 
       const newBoost = new BoostEffect(
         randomX,
-        game.gameBounds.top - 10,
+        gameCanvas.gameBounds.top - 10,
         boostImg,
         2,
         100,
         100,
-        game.gameBounds,
+        gameCanvas.gameBounds,
         game.boostsList,
         effect
       );
@@ -133,13 +140,13 @@ export default class Generator {
     const bulletImg = `./img/boosts/bullet.png`;
 
     const newBullet = new Bullet(
-      game.player.position.x + game.player.width / 2,
-      game.player.position.y + game.player.height / 2,
+      gameCanvas.player.position.x + gameCanvas.player.width / 2,
+      gameCanvas.player.position.y + gameCanvas.player.height / 2,
       bulletImg,
       30,
       30,
       5,
-      game.gameBounds,
+      gameCanvas.gameBounds,
       game.bulletList,
       game.shootDirection
     );

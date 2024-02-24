@@ -9,6 +9,9 @@ import "../styles/components/game_over.css";
 // Game States
 import GameState from "./classes/game_states/GameState.js";
 import Generator from "./classes/game_states/Generator.js";
+import SoundManager from "./classes/game_states/SoundManager.js";
+import InputManager from "./classes/game_states/InputManager.js";
+import GameCanvas from "./classes/game_states/GameCanvas.js";
 import "./classes/game_states/CollisionHandler.js";
 
 // Classes
@@ -27,21 +30,24 @@ import "./utils/audio/music.js";
 
 generateNavbar();
 
-export const game = new GameState();
+export const gameState = new GameState();
+export const soundManager = new SoundManager();
+export const inputManager = new InputManager();
+export const gameCanvas = new GameCanvas();
 
 // Generating in time
 setInterval(() => {
-  Generator.generateObstacles(game);
+  Generator.generateObstacles(gameState);
 }, 2100);
 
 setInterval(() => {
-  Generator.generatePuddles(game);
+  Generator.generatePuddles(gameState);
 }, 2200);
 
 setInterval(() => {
-  Generator.generatePolice(game);
+  Generator.generatePolice(gameState);
 }, 2000);
 
 setInterval(() => {
-  Generator.generateBoosts(game);
+  Generator.generateBoosts(gameState);
 }, 5000);

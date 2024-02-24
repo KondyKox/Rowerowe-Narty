@@ -1,126 +1,137 @@
-import { game } from "../../MainPlay.js";
+import { gameState, inputManager, gameCanvas } from "../../MainPlay.js";
 import CollisionHandler from "../../classes/game_states/CollisionHandler.js";
 import BoostEffect from "../../classes/BoostEffect.js";
 import gameOverScreen from "../ui/gameOver.js";
 
-let gameIsOver = false;
-
-// Game loop function
+// game loop function
 function gameLoop() {
-  game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height);
+  gameCanvas.ctx.clearRect(
+    0,
+    0,
+    gameCanvas.canvas.width,
+    gameCanvas.canvas.height
+  );
 
   // Player movement
-  game.player.velocity.x = 0;
-  game.player.velocity.y = 0;
+  gameCanvas.player.velocity.x = 0;
+  gameCanvas.player.velocity.y = 0;
 
   if (!CollisionHandler.collisionWithPuddles()) {
-    if (game.keys.w.pressed) game.player.velocity.y = -game.PLAYER_SPEED;
-    if (game.keys.s.pressed) game.player.velocity.y = game.PLAYER_SPEED;
-    if (game.keys.a.pressed) game.player.velocity.x = -game.PLAYER_SPEED;
-    if (game.keys.d.pressed) game.player.velocity.x = game.PLAYER_SPEED;
+    if (inputManager.keys.w.pressed)
+      gameCanvas.player.velocity.y = -gameState.PLAYER_SPEED;
+    if (inputManager.keys.s.pressed)
+      gameCanvas.player.velocity.y = gameState.PLAYER_SPEED;
+    if (inputManager.keys.a.pressed)
+      gameCanvas.player.velocity.x = -gameState.PLAYER_SPEED;
+    if (inputManager.keys.d.pressed)
+      gameCanvas.player.velocity.x = gameState.PLAYER_SPEED;
   } else {
-    if (game.keys.w.pressed) game.player.velocity.y = -game.SLOWED_DOWN;
-    if (game.keys.s.pressed) game.player.velocity.y = game.SLOWED_DOWN;
-    if (game.keys.a.pressed) game.player.velocity.x = -game.SLOWED_DOWN;
-    if (game.keys.d.pressed) game.player.velocity.x = game.SLOWED_DOWN;
+    if (inputManager.keys.w.pressed)
+      gameCanvas.player.velocity.y = -gameState.SLOWED_DOWN;
+    if (inputManager.keys.s.pressed)
+      gameCanvas.player.velocity.y = gameState.SLOWED_DOWN;
+    if (inputManager.keys.a.pressed)
+      gameCanvas.player.velocity.x = -gameState.SLOWED_DOWN;
+    if (inputManager.keys.d.pressed)
+      gameCanvas.player.velocity.x = gameState.SLOWED_DOWN;
   }
 
   // Shoot with pistol
-  for (const bullet of game.bulletList) {
-    bullet.draw(game.ctx);
+  for (const bullet of gameState.bulletList) {
+    bullet.draw(gameCanvas.ctx);
     bullet.update();
   }
 
-  if (game.PISTOL && CollisionHandler.bulletCollision())
+  if (gameState.PISTOL && CollisionHandler.bulletCollision())
     BoostEffect.objectShotDown();
 
   if (CollisionHandler.checkCollisions()) {
     // Check for collision with obstacles
-    if (!game.SHIELD) gameOver();
-    else if (game.SHIELD) BoostEffect.shield();
+    if (!gameState.SHIELD) gameOver();
+    else if (gameState.SHIELD) BoostEffect.shield();
   } else {
     // Creating obstacles
-    for (const obstacle of game.obstacleList) {
-      if (game.OBSTACLES_GRAVITY <= 7) {
-        if (game.score >= game.checkpoint + 1000) {
-          game.checkpoint = game.score;
+    for (const obstacle of gameState.obstacleList) {
+      if (gameState.OBSTACLES_GRAVITY <= 7) {
+        if (gameState.score >= gameState.checkpoint + 1000) {
+          gameState.checkpoint = gameState.score;
 
-          game.OBSTACLES_GRAVITY += 0.15;
+          gameState.OBSTACLES_GRAVITY += 0.15;
         }
       }
 
-      obstacle.draw(game.ctx);
+      obstacle.draw(gameCanvas.ctx);
       obstacle.update();
     }
 
     // Creating puddles
-    for (const puddle of game.puddlesList) {
-      puddle.draw(game.ctx);
+    for (const puddle of gameState.puddlesList) {
+      puddle.draw(gameCanvas.ctx);
       puddle.update();
     }
 
     // Creating police
-    for (const police of game.policeList) {
-      if (game.POLICE_SPEED <= 8) {
-        if (game.score >= game.checkpoint + 1000) {
-          game.checkpoint = game.score;
+    for (const police of gameState.policeList) {
+      if (gameState.POLICE_SPEED <= 8) {
+        if (gameState.score >= gameState.checkpoint + 1000) {
+          gameState.checkpoint = gameState.score;
 
-          game.POLICE_SPEED += 0.2;
+          gameState.POLICE_SPEED += 0.2;
         }
       }
 
-      police.draw(game.ctx);
+      police.draw(gameCanvas.ctx);
       police.update();
     }
 
     // Creating boosts
-    for (const boost of game.boostsList) {
-      boost.draw(game.ctx);
+    for (const boost of gameState.boostsList) {
+      boost.draw(gameCanvas.ctx);
       boost.update();
     }
 
     // Counting score
-    game.scoreEl[0].textContent = game.score;
+    gameCanvas.scoreEl.textContent = gameState.score;
 
-    if (game.score >= game.bestScore)
-      game.bestScoreEl[0].textContent = game.newBestScore;
-    else game.bestScoreEl[0].textContent = game.bestScore;
+    if (gameState.score >= gameState.bestScore)
+      gameCanvas.bestScoreEl.textContent = gameState.newBestScore;
+    else gameCanvas.bestScoreEl.textContent = gameState.bestScore;
 
-    game.score += game.MULTIPLIER;
-    game.newBestScore = game.score;
+    gameState.score += gameState.MULTIPLIER;
+    gameState.newBestScore = gameState.score;
 
-    game.coinEl.textContent = game.coins;
+    gameCanvas.coinEl.textContent = gameState.coins;
 
     // Creating player
-    game.player.draw(game.ctx);
-    game.player.update();
+    gameCanvas.player.draw(gameCanvas.ctx);
+    gameCanvas.player.update();
 
     CollisionHandler.checkCollisions();
     CollisionHandler.boostEffects();
   }
 
-  if (!gameIsOver) requestAnimationFrame(gameLoop);
+  if (!gameState.isGameOver) requestAnimationFrame(gameLoop);
 }
 
-// Finish the game
+// Finish the gameState
 function gameOver() {
-  if (gameIsOver) return;
+  if (gameState.isGameOver) return;
 
-  gameIsOver = true;
+  gameState.isGameOver = true;
 
-  // Game over screen
+  // game over screen
   gameOverScreen();
 
   // Update best score
-  if (game.newBestScore > parseInt(game.bestScore))
+  if (gameState.newBestScore > parseInt(gameState.bestScore))
     localStorage.setItem("bestScore", newBestScore.toString());
 
-  document.querySelector(".score__over").textContent = game.score;
+  document.querySelector(".score__over").textContent = gameState.score;
   document.querySelector(".best-score__over").textContent =
     localStorage.getItem("bestScore");
 
   // Update coins
-  localStorage.setItem("coins", game.coins);
+  localStorage.setItem("coins", gameState.coins);
 
   // Start the game again
   document.addEventListener("click", () => {

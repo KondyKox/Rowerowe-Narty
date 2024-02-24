@@ -1,8 +1,8 @@
-import { game } from "../../MainPlay";
+import { gameCanvas } from "../../MainPlay";
 
 // Display game over screen
 export default function gameOverScreen() {
-  game.canvas.style.display = "none";
+  gameCanvas.canvas.style.display = "none";
 
   // Game Over div
   const gameOverDiv = document.createElement("div");
@@ -26,7 +26,8 @@ export default function gameOverScreen() {
   // Game Over best score
   const bestScoreParagraph = document.createElement("p");
   bestScoreParagraph.classList.add("game-over__best-score");
-  bestScoreParagraph.innerHTML = "Best Score: <span class='best-score__over'></span>";
+  bestScoreParagraph.innerHTML =
+    "Best Score: <span class='best-score__over'></span>";
   scoresDiv.appendChild(bestScoreParagraph);
 
   gameOverDiv.appendChild(scoresDiv);

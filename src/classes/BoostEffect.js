@@ -1,6 +1,6 @@
 import Sprite from "./Sprite.js";
 import Generator from "./game_states/Generator.js";
-import { game } from "../MainPlay.js";
+import { gameState, soundManager } from "../MainPlay.js";
 
 export default class BoostEffect extends Sprite {
   constructor(
@@ -34,9 +34,9 @@ export default class BoostEffect extends Sprite {
 
   // Faster player
   static speed() {
-    game.speedSfx.play();
+    soundManager.speedSfx.play();
 
-    game.PLAYER_SPEED = game.ACCELERATED_SPEED;
+    gameState.PLAYER_SPEED = gameState.ACCELERATED_SPEED;
 
     document.querySelector(".speed").style.display = "block";
   }
@@ -45,33 +45,33 @@ export default class BoostEffect extends Sprite {
   static pistol(key) {
     switch (key) {
       case "ArrowUp":
-        game.shootDirection = "up";
+        gameState.shootDirection = "up";
         break;
       case "ArrowDown":
-        game.shootDirection = "down";
+        gameState.shootDirection = "down";
         break;
       case "ArrowLeft":
-        game.shootDirection = "left";
+        gameState.shootDirection = "left";
         break;
       case "ArrowRight":
-        game.shootDirection = "right";
+        gameState.shootDirection = "right";
         break;
     }
 
-    const newShootSfx = game.shootSfx.cloneNode();
+    const newShootSfx = soundManager.shootSfx.cloneNode();
     newShootSfx.play();
 
-    game.ammunition--;
+    gameState.ammunition--;
 
-    Generator.generateBullets(game);
-    game.shootDirection = null;
+    Generator.generateBullets(gameState);
+    gameState.shootDirection = null;
 
-    document.querySelector(".ammo").textContent = game.ammunition;
+    document.querySelector(".ammo").textContent = gameState.ammunition;
 
-    if (game.ammunition <= 0) {
-      game.PISTOL = false;
+    if (gameState.ammunition <= 0) {
+      gameState.PISTOL = false;
 
-      game.bulletList.forEach((bullet) => bullet.destroy());
+      gameState.bulletList.forEach((bullet) => bullet.destroy());
 
       document.querySelector(".pistol").style.display = "none";
       document.querySelector(".ammo").textContent = "";
@@ -79,8 +79,8 @@ export default class BoostEffect extends Sprite {
   }
 
   static objectShotDown() {
-    game.collidedObject.possibleCollision = false;
-    game.collidedObject.hide();
+    gameState.collidedObject.possibleCollision = false;
+    gameState.collidedObject.hide();
   }
 
   // // Multiple shots with shotgun
@@ -88,25 +88,25 @@ export default class BoostEffect extends Sprite {
 
   // More points
   static multiplier() {
-    game.multiplierSfx.play();
+    soundManager.multiplierSfx.play();
 
-    game.MULTIPLIER = 2;
+    gameState.MULTIPLIER = 2;
 
     document.querySelector(".multi").style.display = "block";
   }
 
   // Protect from 1 hit
   static shield() {
-    if (game.collidedObject != null) {
-      game.shieldSfx.play();
+    if (gameState.collidedObject != null) {
+      soundManager.shieldSfx.play();
 
       document.querySelector(".shield").style.display = "none";
 
-      game.collidedObject.possibleCollision = false;
-      game.collidedObject.hide();
+      gameState.collidedObject.possibleCollision = false;
+      gameState.collidedObject.hide();
 
-      game.SHIELD = false;
-      game.collidedObject = null;
+      gameState.SHIELD = false;
+      gameState.collidedObject = null;
     }
   }
 }
