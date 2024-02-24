@@ -12,15 +12,6 @@ import Generator from "./classes/game_states/Generator.js";
 import SoundManager from "./classes/game_states/SoundManager.js";
 import InputManager from "./classes/game_states/InputManager.js";
 import GameCanvas from "./classes/game_states/GameCanvas.js";
-import "./classes/game_states/CollisionHandler.js";
-
-// Classes
-import "./classes/Sprite.js";
-import "./classes/Player.js";
-import "./classes/Obstacle.js";
-import "./classes/Police.js";
-import "./classes/BoostEffect.js";
-import "./classes/Bullet.js";
 
 // Utils
 import generateNavbar from "./utils/ui/navbard.js";
