@@ -97,7 +97,7 @@ export default class CollisionHandler {
             boost.destroy();
             setTimeout(() => {
               gameCanvas.PLAYER_SPEED = gameState.DEFAULT_SPEED;
-              document.querySelector(".speed").style.display = "none";
+              document.querySelector(".speed").classList.add("inactive");
             }, 5000);
             break;
 
@@ -107,7 +107,7 @@ export default class CollisionHandler {
             gameState.ammunition = 10;
             gameState.PISTOL = true;
 
-            document.querySelector(".pistol").style.display = "block";
+            document.querySelector(".pistol").classList.remove("inactive");
             document.querySelector(".ammo").textContent = gameState.ammunition;
             boost.destroy();
             break;
@@ -122,7 +122,7 @@ export default class CollisionHandler {
             boost.destroy();
             setTimeout(() => {
               gameState.MULTIPLIER = 1;
-              document.querySelector(".multi").style.display = "none";
+              document.querySelector(".multi").classList.add("inactive");
             }, 5000);
             break;
 
@@ -130,7 +130,7 @@ export default class CollisionHandler {
             soundManager.shieldSfx.play();
 
             gameState.SHIELD = true;
-            document.querySelector(".shield").style.display = "block";
+            document.querySelector(".shield").classList.remove("inactive");
             boost.destroy();
             break;
 

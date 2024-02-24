@@ -52,3 +52,7 @@ body {
 .ui__boost {
   display: flex;
 }
+
+.inactive {
+  display: none;
+}

@@ -2,31 +2,26 @@
   {
     "id": 1,
     "name": "speed_boost",
-    "src": "./img/boosts/speed.png",
-    "isActive": false
+    "src": "./img/boosts/speed.png"
   },
   {
     "id": 2,
     "name": "pistol",
-    "src": "./img/boosts/pistol.png",
-    "isActive": false
+    "src": "./img/boosts/pistol.png"
   },
   {
     "id": 3,
     "name": "score_multiplier",
-    "src": "./img/boosts/multiplier.png",
-    "isActive": false
+    "src": "./img/boosts/multiplier.png"
   },
   {
     "id": 4,
     "name": "shield",
-    "src": "./img/boosts/shield.png",
-    "isActive": false
+    "src": "./img/boosts/shield.png"
   },
   {
     "id": 5,
     "name": "coin",
-    "src": "./img/boosts/coin.png",
-    "isActive": true
+    "src": "./img/boosts/coin.png"
   }
 ]

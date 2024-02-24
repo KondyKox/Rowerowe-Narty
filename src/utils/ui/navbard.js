@@ -26,30 +26,29 @@ function generateBoostsList() {
   boostsList.classList.add("ui__boosts", "ui__list");
 
   boostsData.forEach((boost) => {
-    if (boost.isActive) {
-      const boostItem = document.createElement("li");
-      boostItem.classList.add("ui__element", "ui__boost");
+    const boostItem = document.createElement("li");
+    boostItem.classList.add("ui__element", "ui__boost");
 
-      const boostImg = document.createElement("img");
-      boostImg.src = boost.src;
-      boostImg.alt = boost.name;
-      boostImg.classList.add("boost", boost.name);
+    const boostImg = document.createElement("img");
+    boostImg.src = boost.src;
+    boostImg.alt = boost.name;
+    boostImg.classList.add("boost", boost.name);
+    if (boost.name !== "coin") boostImg.classList.add("inactive");
 
-      boostItem.appendChild(boostImg);
+    boostItem.appendChild(boostImg);
 
-      // Quantity of ammo / coins
-      if (boost.name === "pistol" || boost.name === "coin") {
-        const boostQuantity = document.createElement("sup");
+    // Quantity of ammo / coins
+    if (boost.name === "pistol" || boost.name === "coin") {
+      const boostQuantity = document.createElement("sup");
 
-        boost.name === "pistol"
-          ? boostQuantity.classList.add("ammo")
-          : boostQuantity.classList.add("coins");
+      boost.name === "pistol"
+        ? boostQuantity.classList.add("ammo")
+        : boostQuantity.classList.add("coins");
 
-        boostItem.appendChild(boostQuantity);
-      }
-
-      boostsList.appendChild(boostItem);
+      boostItem.appendChild(boostQuantity);
     }
+
+    boostsList.appendChild(boostItem);
   });
 
   return boostsList;

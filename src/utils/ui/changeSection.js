@@ -2,7 +2,6 @@ import renderSkins from "../store/store";
 
 // Sections
 const sectionMain = document.querySelector("#sectionMain");
-const sectionAcc = document.querySelector("#sectionAccount");
 const sectionBack = document.querySelector("#sectionBack");
 const logo = document.querySelector(".logo");
 let currentSection = null;

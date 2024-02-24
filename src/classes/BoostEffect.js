@@ -38,10 +38,10 @@ export default class BoostEffect extends Sprite {
 
     gameState.PLAYER_SPEED = gameState.ACCELERATED_SPEED;
 
-    document.querySelector(".speed").style.display = "block";
+    document.querySelector(".speed_boost").classList.remove("inactive");
   }
 
-  // Shot with pistol
+  // Shoot with pistol
   static pistol(key) {
     switch (key) {
       case "ArrowUp":
@@ -73,7 +73,7 @@ export default class BoostEffect extends Sprite {
 
       gameState.bulletList.forEach((bullet) => bullet.destroy());
 
-      document.querySelector(".pistol").style.display = "none";
+      document.querySelector(".pistol").classList.add("inactive");
       document.querySelector(".ammo").textContent = "";
     }
   }
@@ -92,7 +92,7 @@ export default class BoostEffect extends Sprite {
 
     gameState.MULTIPLIER = 2;
 
-    document.querySelector(".multi").style.display = "block";
+    document.querySelector(".score_multiplier").classList.remove("inactive");
   }
 
   // Protect from 1 hit
@@ -100,7 +100,7 @@ export default class BoostEffect extends Sprite {
     if (gameState.collidedObject != null) {
       soundManager.shieldSfx.play();
 
-      document.querySelector(".shield").style.display = "none";
+      document.querySelector(".shield").classList.add("inactive");
 
       gameState.collidedObject.possibleCollision = false;
       gameState.collidedObject.hide();
