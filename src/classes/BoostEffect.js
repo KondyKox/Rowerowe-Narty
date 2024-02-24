@@ -66,7 +66,7 @@ export default class BoostEffect extends Sprite {
     Generator.generateBullets(game);
     game.shootDirection = null;
 
-    document.querySelector(".ammo").innerHTML = game.ammunition;
+    document.querySelector(".ammo").textContent = game.ammunition;
 
     if (game.ammunition <= 0) {
       game.PISTOL = false;
@@ -74,7 +74,7 @@ export default class BoostEffect extends Sprite {
       game.bulletList.forEach((bullet) => bullet.destroy());
 
       document.querySelector(".pistol").style.display = "none";
-      document.querySelector(".ammo").innerHTML = "";
+      document.querySelector(".ammo").textContent = "";
     }
   }
 

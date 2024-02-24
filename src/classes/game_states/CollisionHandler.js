@@ -92,7 +92,7 @@ export default class CollisionHandler {
             game.PISTOL = true;
 
             document.querySelector(".pistol").style.display = "block";
-            document.querySelector(".ammo").innerHTML = game.ammunition;
+            document.querySelector(".ammo").textContent = game.ammunition;
             boost.destroy();
             break;
 
