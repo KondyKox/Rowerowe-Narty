@@ -10,10 +10,10 @@
   font-weight: 800;
   text-shadow: 1px 1px 1px var(--clr-light), -1px 1px 1px var(--clr-light),
     -1px -1px 0 var(--clr-light), 1px -1px 0 var(--clr-light);
-  overflow-x: auto;
 }
 
 .skins {
+  list-style-type: none;
   display: flex;
   justify-content: center;
   align-items: center;

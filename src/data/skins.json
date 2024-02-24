@@ -16,5 +16,11 @@
     "name": "Mucha",
     "imgSrc": "./img/player/mucha.png",
     "price": 100
+  },
+  {
+    "id": 4,
+    "name": "OG",
+    "imgSrc": "./img/player/og.png",
+    "price": 100
   }
 ]
