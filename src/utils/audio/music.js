@@ -1,14 +1,10 @@
-import SoundManager from "../../classes/game_states/SoundManager";
-
 document.addEventListener("DOMContentLoaded", function () {
-  const soundManager = new SoundManager();
-
   const currentURL = window.location.href;
 
   // Get music URL by current page
   function generateAudioPath(url) {
-    if (url.includes("index.html")) return soundManager.mainTheme.play();
-    else return soundManager.gameMusic.play();
+    if (url.includes("index.html")) return "./sfx/main-theme.mp3";
+    else return "./sfx/game-music.mp3";
   }
 
   const audioPath = generateAudioPath(currentURL);

@@ -51,5 +51,3 @@ document.querySelectorAll(".btn").forEach((btn) => {
     }
   });
 });
-
-export { currentSection, sectionMain, sectionBack };

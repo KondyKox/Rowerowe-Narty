@@ -1,8 +1,5 @@
 export default class SoundManager {
   constructor() {
-    this.mainTheme = new Audio("./sfx/main-theme.mp3");
-    this.gameMusic = new Audio("./sfx/game-music.mp3");
-
     this.chickenSfx = new Audio("./sfx/chicken.mp3");
     this.policeSfx = new Audio("./sfx/police.mp3");
     this.puddleSfx = new Audio("./sfx/puddle.mp3");
