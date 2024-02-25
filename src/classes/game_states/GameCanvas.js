@@ -34,7 +34,7 @@ export default class GameCanvas {
     const playerSkin = localStorage.getItem("playerSkin");
     if (playerSkin === null) localStorage.setItem("playerSkin", "default");
 
-    const playerImg = `./img/player/${playerSkin}.png`;
+    const playerImg = `../public/img/player/${playerSkin}.png`;
     this.player = new Player(playerX, playerY, playerImg);
   }
 }

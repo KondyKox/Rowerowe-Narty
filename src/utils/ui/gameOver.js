@@ -1,4 +1,4 @@
-import { gameCanvas } from "../../MainPlay";
+import { gameCanvas } from "../../MainPlay.js";
 
 // Display game over screen
 export default function gameOverScreen() {

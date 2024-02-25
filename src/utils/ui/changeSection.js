@@ -1,4 +1,4 @@
-import renderSkins from "../store/store";
+import renderSkins from "../store/store.js";
 
 // Sections
 const sectionMain = document.querySelector("#sectionMain");
@@ -16,7 +16,7 @@ document.querySelectorAll(".btn").forEach((btn) => {
       case "play":
         logo.classList.add("animate");
         logo.addEventListener("animationend", () => {
-          window.location.href = "./play.html";
+          window.location.href = "./public/play.html";
         });
         break;
 

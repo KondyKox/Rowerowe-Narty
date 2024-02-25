@@ -1,4 +1,4 @@
-import boostsData from "../../data/boosts.json";
+import { boostsData } from "../../data/boosts.js";
 
 let isNavbarRendered = false;
 
@@ -8,10 +8,10 @@ function generateLogo() {
   logoDiv.classList.add("nav__logo");
 
   const linkToMenu = document.createElement("a");
-  linkToMenu.href = "index.html";
+  linkToMenu.href = "../index.html";
 
   const logoImg = document.createElement("img");
-  logoImg.src = "./img/logo.png";
+  logoImg.src = "../public/img/logo.png";
   logoImg.alt = "Rowerowe Narty - logo";
 
   linkToMenu.appendChild(logoImg);

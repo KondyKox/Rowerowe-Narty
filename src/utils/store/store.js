@@ -1,4 +1,4 @@
-import skinsData from "../../data/skins.json";
+import { skinsData } from "../../data/skins.js";
 
 let areSkinsRendered = false;
 
@@ -25,7 +25,7 @@ function createSkinElement(skin) {
 
   const priceElement = document.createElement("span");
   priceElement.classList.add("skin__price");
-  priceElement.innerHTML = `Price: <span class="price-value">${skin.price}</span> <img src="./img/boosts/coin.png" alt="Skin price" />`;
+  priceElement.innerHTML = `Price: <span class="price-value">${skin.price}</span> <img src="./public/img/boosts/coin.png" alt="Skin price" />`;
 
   descriptionElement.appendChild(nameElement);
   descriptionElement.appendChild(priceElement);

@@ -1,26 +1,26 @@
-[
+export const skinsData = [
   {
     "id": 1,
     "name": "Default",
-    "imgSrc": "./img/player/default.png",
+    "imgSrc": "./public/img/player/default.png",
     "price": 0
   },
   {
     "id": 2,
     "name": "Invalid",
-    "imgSrc": "./img/player/invalid.png",
+    "imgSrc": "./public/img/player/invalid.png",
     "price": 50
   },
   {
     "id": 3,
     "name": "Mucha",
-    "imgSrc": "./img/player/mucha.png",
+    "imgSrc": "./public/img/player/mucha.png",
     "price": 100
   },
   {
     "id": 4,
     "name": "OG",
-    "imgSrc": "./img/player/og.png",
+    "imgSrc": "./public/img/player/og.png",
     "price": 100
   }
 ]

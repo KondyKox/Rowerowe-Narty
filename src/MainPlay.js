@@ -1,10 +1,10 @@
 // Import in play.html (game)
 
 // CSS Styles
-import "../styles/style.css";
-import "../styles/utils.css";
-import "../styles/components/user_interface.css";
-import "../styles/components/game_over.css";
+// import "../styles/style.css";
+// import "../styles/utils.css";
+// import "../styles/components/user_interface.css";
+// import "../styles/components/game_over.css";
 
 // Game States
 import GameState from "./classes/game_states/GameState.js";

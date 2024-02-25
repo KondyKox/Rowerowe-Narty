@@ -9,7 +9,7 @@ export default class Generator {
   // Generate obstacles
   static generateObstacles(game) {
     for (let i = 0; i < game.numberOfObstacles; i++) {
-      const obstacleImg = "./img/enemy.png";
+      const obstacleImg = "../public/img/enemy.png";
 
       const randomX =
         Math.random() *
@@ -36,7 +36,7 @@ export default class Generator {
     for (let i = 0; i < game.numberOfObstacles; i++) {
       const number = Math.floor(Math.random() * 2) + 1;
 
-      const puddleImg = `./img/puddle${number}.png`;
+      const puddleImg = `../public/img/puddle${number}.png`;
 
       const randomX =
         Math.random() *
@@ -70,7 +70,7 @@ export default class Generator {
         gameCanvas.gameBounds.right
       ).direction;
 
-      const policeImg = "./img/police.png";
+      const policeImg = "../public/img/police.png";
 
       const newPolice = new Police(
         policeX,
@@ -107,7 +107,7 @@ export default class Generator {
       ];
       const effect = this.randomEffect(effects);
 
-      const boostImg = `./img/boosts/${effect}.png`;
+      const boostImg = `../public/img/boosts/${effect}.png`;
 
       const randomX =
         Math.random() *
@@ -137,7 +137,7 @@ export default class Generator {
 
   // Generate bullets on shoot
   static generateBullets(game) {
-    const bulletImg = `./img/boosts/bullet.png`;
+    const bulletImg = `../public/img/boosts/bullet.png`;
 
     const newBullet = new Bullet(
       gameCanvas.player.position.x + gameCanvas.player.width / 2,
