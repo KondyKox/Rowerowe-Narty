@@ -124,7 +124,7 @@ function gameOver() {
 
   // Update best score
   if (gameState.newBestScore > parseInt(gameState.bestScore))
-    localStorage.setItem("bestScore", newBestScore.toString());
+    localStorage.setItem("bestScore", gameState.newBestScore.toString());
 
   document.querySelector(".score__over").textContent = gameState.score;
   document.querySelector(".best-score__over").textContent =
